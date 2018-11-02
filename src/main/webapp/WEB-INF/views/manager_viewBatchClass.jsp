@@ -5,22 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Language Institute-Classes</title>
-
 
 
 <body id="page-top">
 
-	<jsp:include page="accountantHeader.jsp" />
+	<jsp:include page="managerHeader.jsp" />
 
 
 	<!-- DataTables Example -->
@@ -35,7 +24,7 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Batch Name</th>
+							
 							<th>Classroom Number</th>
 							<th>Start Time </th>
 							<th>End Time</th>
@@ -44,17 +33,16 @@
 							<th>Teacher</th>
 							<th>Student's Fee</th>
 							<th>Teacher's Salary</th>
-							<th>View Remaining Students</th>
-							<th>View Paid Students</th>
+							<th>Batch Name</th>
 							
+							<th>Action</th>
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="clas" items="${ClassList }">
+						<c:forEach var="clas" items="${classList }">
 							<tr>
 								<td>${clas.getId() }</td>
-								<td>${clas.getBatch().getBatchId() }</td>
 								<td>${clas.getClassroomNo() }</td>
 								<td>${clas.getStartTime() }</td>
 								<td>${clas.getEndTime() }</td>
@@ -63,8 +51,10 @@
 							    <td>${clas.getTeacher().getFirstname() }</td>
 							    <td>${clas.getStudentFee() }</td>
 							    <td>${clas.getTeacherSalary() }</td>
-							   <td><a href="accountant/viewunPaid?id=${clas.getId()}" class="btn btn-danger">View</a>
-								<td><a href="accountant/viewPaid?id=${clas.getId()}" class="btn btn-primary">View</a>
+							    <td>${clas.getBatch().getBatchId() }</td>
+							   
+								<td><a href="manager/updateClass?id=${clas.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
+									href="manager/deleteClass?id=${clas.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
 							</tr>
 						</c:forEach>
 
@@ -80,6 +70,7 @@
 
 
 	<jsp:include page="footer.jsp" />
+	
 	
 
 </body>

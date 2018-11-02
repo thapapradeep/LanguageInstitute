@@ -30,7 +30,7 @@
 							<th>Email</th>
 							<th>Contact</th>
 							<th>Salary</th>
-							<th>Action</th>
+							
 						</tr>
 					</thead>
 
@@ -44,7 +44,7 @@
 								<td>${staff.getEmail() }</td>
 								<td>${staff.getContact() }</td>
 								<td>${staff.getRole().getSalary()}</td>
-								<td><a href="accountant/viewStaffSlip?id=${staff.getId()}" class="btn btn-success">Pay Salary</a>
+								
 							
 							
 							</tr>

@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +34,12 @@ public class BatchController {
 	}
 	
 	@RequestMapping(value="**/manager/add-addBatch", method=RequestMethod.POST)
-	public String addBatcch(@ModelAttribute("batch")Batch batch) {
+	public String addBatcch(@ModelAttribute("batch")Batch batch) throws Exception {
+		 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	        Date date =new Date(); 
+	        Date date1=dateFormat.parse(dateFormat.format(date));
+	       batch.setDate(date1);
+	       batch.setStatus("enabled");
 		batchRepository.save(batch);
 		return "redirect:/manager/viewBatch";
 	}
@@ -39,6 +48,11 @@ public class BatchController {
 	public String loadViewBatchPage(Model model) {
 		model.addAttribute("batchList", batchRepository.findAll());
 		return"manager_viewBatch";
+	}
+	@RequestMapping(value="**/receptionist/viewBatch", method=RequestMethod.GET)
+	public String r_loadViewBatchPage( Model model) {
+		model.addAttribute("batchList", batchRepository.findAll());
+		return"receptionist_viewBatch";
 	}
 	
 	

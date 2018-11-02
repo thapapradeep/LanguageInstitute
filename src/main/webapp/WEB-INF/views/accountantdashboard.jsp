@@ -137,7 +137,7 @@
 								<td>${staff.getEmail() }</td>
 								<td>${staff.getContact() }</td>
 								<td>${staff.getRole().getSalary()}</td>
-								<td><a href="accountant/paySatff?id=${staff.getId()}&amount=${staff.getRole().getSalary()}" class="btn btn-success">Pay Salary</a>
+								<td><a href="accountant/viewStaffSlip?id=${staff.getId()}" class="btn btn-success">Pay Salary</a>
 							
 							
 							</tr>
@@ -185,7 +185,7 @@
 								<td>${teacher.getContact() }</td>
 								<td>${teacher.getSalary()}</td>
 								<td>${teacher.getStatus() }</td>
-								<td><a href="accountant/payTeacher?id=${teacher.getId()}&amount=${teacher.getSalary()}" class="btn btn-success">Pay Salary</a>
+								<td><a href="accountant/viewTeacherSlip?id=${teacher.getId()}" class="btn btn-success">Pay Salary</a>
 									
 						
 							</tr>

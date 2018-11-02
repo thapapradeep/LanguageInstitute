@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="teacherAttendence")
@@ -53,7 +55,9 @@ public class TeacherAttendence {
 		this.status = status;
 	}
 	@Column(name="date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
+	
 	@Column(name="status")
 	private String status;
 	

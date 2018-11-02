@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="staffAttendence")
@@ -26,9 +28,11 @@ public class StaffAttendence {
 	private Staff staff;
 	
 	@Column(name="date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Column(name="status")
+	
 	private String status;
 	
 	public long getId() {

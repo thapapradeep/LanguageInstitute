@@ -5,6 +5,7 @@ package com.soft.app.controller;
 
 
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,18 +117,23 @@ public class UserController {
 
 	@RequestMapping(value="**/accountant",method=RequestMethod.GET)
 	public String loadAccountantDashboard(Model model, Model model1) {
-		//Calendar calendar=Calendar.getInstance();
-				//int month=calendar.get(Calendar.MONTH);
-				//int month1=month+1;
-				model.addAttribute("staffList", staffSalaryRepository.getUnPaidStaff(10));
-		model1.addAttribute("teacherList", teacherSalaryRepository.getUnPaidTeacher(10));
+		Calendar calendar=Calendar.getInstance();
+				int month=calendar.get(Calendar.MONTH);
+				int month1=month+1;
+				
+				model.addAttribute("staffList", staffSalaryRepository.getUnPaidStaff(month1));
+		model1.addAttribute("teacherList", teacherSalaryRepository.getUnPaidTeacher(month1));
 				return "accountantdashboard";
 	}
 	
 
 	@RequestMapping(value="**/receptionist",method=RequestMethod.GET)
-	public String loadReceptionistDashboard(Model model) {
-		model.addAttribute("routineList", classRoutineReopsitory.findAll());
+	public String loadReceptionistDashboard(Model model, Model model1) {
+		Calendar calendar=Calendar.getInstance();
+		int day=calendar.get(Calendar.DAY_OF_WEEK);
+		System.out.println(day);
+		model.addAttribute("classList", classRoutineReopsitory.getRoutineByDay(new Long(day),new Long(1)));
+		model1.addAttribute("classList1", classRoutineReopsitory.getRoutineByDay(new Long(day),new Long(2)));
 		return "receptionistdashboard";
 	}
 	

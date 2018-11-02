@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,30 +29,41 @@ private StaffAttendence getstaffAttendence() {
 }
 
 @RequestMapping(value="**/receptionist/staffAttendences", method=RequestMethod.GET)
-private String loadStaffAttendence(Model model) {
-	model.addAttribute("staffList", staffRepository.findAll());
+private String loadStaffAttendence(Model model)throws Exception {
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    Date date =new Date(); 
+    Date date1=dateFormat.parse(dateFormat.format(date));
+	model.addAttribute("staffList", staffRepository.getStaffByDate(date1));
 	return "receptionist_staffAttendence";
 	
 }
 
 @RequestMapping(value="**/present-Staff", method=RequestMethod.GET)
-private String presentStaff(@RequestParam("id") Long id) {
+private String presentStaff(@RequestParam("id") Long id) throws Exception{
 	Staff staff=new Staff();
 	staff.setId(id);
 	StaffAttendence sa=new StaffAttendence();
 	sa.setStaff(staff);
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    Date date =new Date(); 
+    Date date1=dateFormat.parse(dateFormat.format(date));
+   sa.setDate(date1);
 	sa.setStatus("Present");
 	staffAttendenceReposiory.save(sa);
 	return "redirect:/receptionist/staffAttendences";
 }
 
 @RequestMapping(value="**/absent-Staffs", method=RequestMethod.GET)
-private String absentStaff(@RequestParam("id") Long id) {
+private String absentStaff(@RequestParam("id") Long id) throws Exception{
 	Staff staff=new Staff();
 	staff.setId(id);
 	StaffAttendence sa=new StaffAttendence();
 	sa.setStaff(staff);
 	sa.setStatus("Absent");
+	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    Date date =new Date(); 
+    Date date1=dateFormat.parse(dateFormat.format(date));
+   sa.setDate(date1);
 	staffAttendenceReposiory.save(sa);
 	return "redirect:/receptionist/staffAttendences";
 }

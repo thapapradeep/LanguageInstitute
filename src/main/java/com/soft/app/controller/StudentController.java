@@ -30,9 +30,9 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="**/receptionist/add-addStudent", method=RequestMethod.POST)
-	public String addStudent(@ModelAttribute("student") Student student) {
+	public String addStudent(@ModelAttribute("student") Student student)throws Exception {
 		student.setAddedDate(new Date());
-		student.setStatus("Enabled");
+		student.setStatus("enabled");
 		studentRepository.save(student);
 		return "redirect:receptionist/students";
 		

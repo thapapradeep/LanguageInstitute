@@ -1,6 +1,6 @@
 package com.soft.app.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="batch")
@@ -26,8 +28,7 @@ public class Batch {
 	
 	@Column(name="name")
 	private String name;
-	//@Column(name="startDate")
-   // private  Date startDate;
+	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch" )
 	private List<classes>classes=new ArrayList<>();
 	
@@ -38,6 +39,7 @@ public class Batch {
 	private List<Student>student=new ArrayList<>();
 	
 	@Column(name="added_date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Column(name="status")

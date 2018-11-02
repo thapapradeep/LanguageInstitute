@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.soft.app.model.Teacher;
 import com.soft.app.repository.LanguageRepository;
 import com.soft.app.repository.TeacherRepository;
+import com.soft.app.repository.TeacherSalaryRepository;
 
 @Controller
 public class TeacherController {
 	@Autowired private TeacherRepository teacherRepository;
 	@Autowired private LanguageRepository languageRepository;
+	@Autowired private TeacherSalaryRepository teacherSalary;
 	
 	@ModelAttribute("teacher")
 	public Teacher getTeacher() {
@@ -31,9 +37,13 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value="**/receptionist/add-addTeacher", method=RequestMethod.POST)
-	public String addTeacher(@ModelAttribute("teacher")Teacher teacher) {
-			
- 	  teacher.setStatus("Enabled");
+	public String addTeacher(@ModelAttribute("teacher")Teacher teacher) throws Exception{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       teacher.setDate(date1);
+       teacher.setStatus("enabled");	
+ 	;
 		
 		teacherRepository.save(teacher);
        return "redirect:receptionist/teachers";
@@ -53,8 +63,20 @@ public class TeacherController {
 		
 		@RequestMapping(value="**/accountant/teachers", method=RequestMethod.GET)
 		public String ac_loadAllTeachers(Model model) {
-			model.addAttribute("teacherList", teacherRepository.findAll());
+			Calendar calendar=Calendar.getInstance();
+			int month=calendar.get(Calendar.MONTH);
+			int month1=month+1;
+			model.addAttribute("teacherList", teacherSalary.getUnPaidTeacher(month1));
 			return "accountant_viewTeachers";
+	
+	}
+		@RequestMapping(value="**/accountant/paidteachers", method=RequestMethod.GET)
+		public String acp_loadAllTeachers(Model model) {
+			Calendar calendar=Calendar.getInstance();
+			int month=calendar.get(Calendar.MONTH);
+			int month1=month+1;
+			model.addAttribute("teacherList", teacherSalary.getPaidTeacher(month1));
+			return "accountant_viewPaidTeacher";
 	
 	}
 		

@@ -5,32 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Language Institute-Classes</title>
-
-<!-- Bootstrap core CSS-->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-	type="text/css">
-
-<!-- Page level plugin CSS-->
-<link href="vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
-
-<!-- Custom styles for this template-->
-<link href="css/sb-admin.css" rel="stylesheet">
-
-</head>
 
 <body id="page-top">
 
@@ -40,7 +15,7 @@
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Language Institute-All Classes
+			<i class="fas fa-table"></i> Language Institute-Today's Class of Batch 1
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -49,34 +24,74 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Batch Name</th>
-							<th>Classroom Number</th>
-							<th>Start Time </th>
-							<th>End Time</th>
-							<th>Duration</th>
-							<th>Language</th>
-							<th>Teacher</th>
-							<td>Attendance</td>
-		
+							<th>Day</th>
+							<th>First Class </th>
+							<th>Second Class</th>
+							<th>Third Class</th>
+							
 							
 							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="clas" items="${ClassList }">
+						<c:forEach var="routine" items="${classList}">
 							<tr>
-								<td>${clas.getId() }</td>
-								<td>${clas.getBatch().getName() }</td>
-								<td>${clas.getClassroomNo() }</td>
-								<td>${clas.getStartTime() }</td>
-								<td>${clas.getEndTime() }</td>
-								<td>${clas.getDuration() }</td>
-							    <td>${clas.getLanguage().getLanguage() }</td>
-							    <td>${clas.getTeacher().getFirstname() }</td>
+								<td>${routine.getId() }</td>
+								<td>${routine.getDay().getDay()}</td>
+								<td>${routine.getClass1().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass1().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass2().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass3().getId()}" class="btn btn-primary">Attendance</a></td>
 							    
+							   
+								
+									
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
+	
+	<!-- DataTables Example -->
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-Today's Class of Batch 2
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Day</th>
+							<th>First Class </th>
+							<th>Second Class</th>
+							<th>Third Class</th>
+							
+							
+							
+						</tr>
+					</thead>
+
+					<tbody >
+						<c:forEach var="routine" items="${classList1}">
+							<tr>
+								<td>${routine.getId() }</td>
+								<td>${routine.getDay().getDay()}</td>
+								<td>${routine.getClass1().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass1().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass2().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass3().getId()}" class="btn btn-primary">Attendance</a></td>
 							    
-								<td><a href="receptionist/attendStudent?class_id=${clas.getId()}" class="btn btn-success">Attendance</a></td>
+							   
+								
+									
 							</tr>
 						</c:forEach>
 
@@ -93,6 +108,8 @@
 
 	<jsp:include page="footer.jsp" />
 	
+	
+
 </body>
 
 </html>

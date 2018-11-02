@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,17 +29,20 @@ public class StudentAttendenceController {
 	}
 
    @RequestMapping(value="**/receptionist/attendStudent")
-   public String loadStudentAttendencePage(@RequestParam("class_id")Long id, Model model, Model model1)
+   public String loadStudentAttendencePage(@RequestParam("id")Long id, Model model, Model model1)throws Exception
    {
 	   classes clas=new classes();
 	   clas.setId(id);
 	   model1.addAttribute("clas", clas);
-	 model.addAttribute("studentList", studentAttendenceRepository.getStudentById(id));
+	   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+       Date date =new Date(); 
+       Date date1=dateFormat.parse(dateFormat.format(date));
+	 model.addAttribute("studentList", studentAttendenceRepository.getStudentById(id, date1));
 	 return "receptionist_studentAttendence";
    }
    
    @RequestMapping(value="**/receptionist/present-student", method={RequestMethod.POST, RequestMethod.GET})
-   public String presentStudent(@RequestParam("id")Long id, @RequestParam("class_id")Long class_id ) {
+   public String presentStudent(@RequestParam("id")Long id, @RequestParam("class_id")Long class_id ) throws Exception{
 	   classes clas=new classes();
 		Student st=new Student();
 		clas.setId(class_id);
@@ -43,13 +50,17 @@ public class StudentAttendenceController {
 		StudentAttendence studentAttendence=new StudentAttendence();
 		studentAttendence.setClasses4(clas);
 		studentAttendence.setStudent(st);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       studentAttendence.setDate(date1);
 		studentAttendence.setStatus("present");
 		studentAttendenceRepository.save(studentAttendence);
 		return "redirect:receptionist/attendStudent?class_id="+class_id;
 		
    }
    @RequestMapping(value="**/receptionist/absent-student", method= {RequestMethod.POST, RequestMethod.GET})
-   public String absentStudent(@RequestParam("id")Long id, @RequestParam("class_id")Long class_id ) {
+   public String absentStudent(@RequestParam("id")Long id, @RequestParam("class_id")Long class_id )throws Exception {
 	   classes clas=new classes();
 		Student st=new Student();
 		clas.setId(class_id);
@@ -58,6 +69,10 @@ public class StudentAttendenceController {
 		studentAttendence.setClasses4(clas);
 		studentAttendence.setStudent(st);
 		studentAttendence.setStatus("present");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       studentAttendence.setDate(date1);
 		studentAttendenceRepository.save(studentAttendence);
 		return "redirect:receptionist/attendStudent?class_id="+class_id;
 		

@@ -40,6 +40,7 @@
 							<th>Name</th>
 							<th>Action</th>
 							<th>View Students</th>
+							<th>View Class</th>
 			
 							
 						</tr>
@@ -53,7 +54,8 @@
 								<td>${batch.getName() }</td>
 								<td><a href="manager/updateBatch?id=${batch.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
 									href="manager/deleteBatch?id=${batch.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
-									
+								<td><a href="manager/viewStudentBatch?id=${batch.getId()}" class="btn btn-primary">View Student</a></td>
+									<td><a href="manager/viewClassBatch?id=${batch.getId()}" class="btn btn-primary">View Class</a></td>
 							</tr>
 						</c:forEach>
 

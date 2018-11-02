@@ -24,27 +24,18 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Firstname</th>
-							<th>Lastname</th>
-							<th>Address</th>
-							<th>Email</th>
-							<th>Contact</th>
-							<th>Salary</th>
+							<th>Month</th>
+							
 							<th>Action</th>
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="staff" items="${staffList }">
+						<c:forEach var="month" items="${monthList}">
 							<tr>
-								<td>${staff.getId() }</td>
-								<td>${staff.getFirstname() }</td>
-								<td>${staff.getLastname() }</td>
-								<td>${staff.getAddress() }</td>
-								<td>${staff.getEmail() }</td>
-								<td>${staff.getContact() }</td>
-								<td>${staff.getRole().getSalary()}</td>
-								<td><a href="accountant/viewStaffSlip?id=${staff.getId()}" class="btn btn-success">Pay Salary</a>
+								<td>${month.getId() }</td>
+								<td>${month.getMonth()}</td>
+								<td><a href="accountant/viewPLStatement?id=${month.getId()}" class="btn btn-success">View PL Statement</a>
 							
 							
 							</tr>

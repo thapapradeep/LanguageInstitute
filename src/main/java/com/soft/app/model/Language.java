@@ -1,6 +1,6 @@
 package com.soft.app.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,6 +32,7 @@ public class Language {
 	private String language;
 	
 	@Column(name="added_date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Column(name="status")

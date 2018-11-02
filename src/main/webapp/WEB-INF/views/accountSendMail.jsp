@@ -53,13 +53,13 @@
          					
          							<div class="form-group">
          								<label>First name</label>
-         								<input type="text" class="form-control" id="studentName" value="${student.getFirstname()}" disabled/>
+         								<input type="text" class="form-control" id="studentName" value="${student.getFirstname()}" />
          								
          							</div>
          						
          							<div class="form-group">
          								<label>Email Address Of Student</label>
-         								<input type="text" class="form-control" id="studentEmail" value="${student.getEmail()}" disabled/>
+         								<input type="text" class="form-control" id="studentEmail" value="${student.getEmail()}" />
          								
          							</div>
          							<div class="form-group">

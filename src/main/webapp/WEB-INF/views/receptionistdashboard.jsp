@@ -107,7 +107,12 @@
 
           <div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Language Institute-All Classes
+			<i class="fas fa-table"></i> Language Institute-Routine
+		</div>
+		<!-- DataTables Example -->
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-Today's Class of Batch 1
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -122,21 +127,22 @@
 							<th>Third Class</th>
 							
 							
-						
+							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="routine" items="${routineList }">
+						<c:forEach var="routine" items="${classList}">
 							<tr>
 								<td>${routine.getId() }</td>
 								<td>${routine.getDay().getDay()}</td>
-								<td>${routine.getClass1().getClassName()}<br>${routine.getClass1().getStartTime()}-${routine.getClass1().getEndTime()}<br>Teacher: ${routine.getClass1().getTeacher().getFirstname()}</td>
-								<td>${routine.getClass2().getClassName()}<br>${routine.getClass2().getStartTime()}-${routine.getClass2().getEndTime()}<br>Teacher: ${routine.getClass2().getTeacher().getFirstname()}</td>
-								<td>${routine.getClass3().getClassName()}<br>${routine.getClass3().getStartTime()}-${routine.getClass3().getEndTime()}<br>Teacher: ${routine.getClass3().getTeacher().getFirstname()}</td>
+								<td>${routine.getClass1().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass1().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass2().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass3().getId()}" class="btn btn-primary">Attendance</a></td>
 							    
 							   
 								
+									
 							</tr>
 						</c:forEach>
 
@@ -148,7 +154,53 @@
 	</div>
 
 	</div>
-        <!-- /.container-fluid -->
+	
+	<!-- DataTables Example -->
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-Today's Class of Batch 2
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Day</th>
+							<th>First Class </th>
+							<th>Second Class</th>
+							<th>Third Class</th>
+							
+							
+							
+						</tr>
+					</thead>
+
+					<tbody >
+						<c:forEach var="routine" items="${classList1}">
+							<tr>
+								<td>${routine.getId() }</td>
+								<td>${routine.getDay().getDay()}</td>
+								<td>${routine.getClass1().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass1().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass2().getId()}" class="btn btn-primary">Attendance</a></td>
+								<td>${routine.getClass2().getClassName()}<br><a href="receptionist/receptionist/attendStudent?id=${routine.getClass3().getId()}" class="btn btn-primary">Attendance</a></td>
+							    
+							   
+								
+									
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
+	<!-- /.container-fluid -->
 
        
        <jsp:include page="footer.jsp"/>

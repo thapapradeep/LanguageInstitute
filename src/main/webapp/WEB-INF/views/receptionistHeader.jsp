@@ -104,6 +104,18 @@
             
           </div>
         </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="teachersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Batch</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="teachersDropdown">
+            
+            <a class="dropdown-item" href="receptionist/viewBatch">View Batch</a>
+            
+            
+          </div>
+        </li>
         
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

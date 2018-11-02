@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,15 +31,22 @@ public class TeacherAttendenceController {
 	
 	
 	@RequestMapping(value="**/receptionist/teacherAttendences", method=RequestMethod.GET)
-	private String loadTeacherAttendence(Model model) {
-		model.addAttribute("teacherList", teacherRepository.findAll());
+	private String loadTeacherAttendence(Model model) throws Exception{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+		model.addAttribute("teacherList", teacherRepository.getTeacherByDate(date1));
 		return "receptionist_teacherAttendence";
 }
 	@RequestMapping(value="**//present-Teacher", method=RequestMethod.GET)
-	private String presentTeacher(@RequestParam("id") Long id) {
+	private String presentTeacher(@RequestParam("id") Long id) throws Exception {
 		Teacher teacher=new Teacher();
 		teacher.setId(id);
 		TeacherAttendence ta=new TeacherAttendence();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       ta.setDate(date1);
 		ta.setTeacher(teacher);
 		ta.setStatus("Present");
 		teacherAttendenceReposiory.save(ta);
@@ -43,10 +54,14 @@ public class TeacherAttendenceController {
 	}
 
 	@RequestMapping(value="**/absent-Teacher", method=RequestMethod.GET)
-	private String absentTeacher(@RequestParam("id") Long id) {
+	private String absentTeacher(@RequestParam("id") Long id) throws Exception{
 		Teacher teacher=new Teacher();
 		teacher.setId(id);
 		TeacherAttendence ta=new TeacherAttendence();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       ta.setDate(date1);
 		ta.setTeacher(teacher);
 		ta.setStatus("Absent");
 		teacherAttendenceReposiory.save(ta);

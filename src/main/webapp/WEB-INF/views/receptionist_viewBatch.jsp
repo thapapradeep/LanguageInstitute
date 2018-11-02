@@ -17,51 +17,43 @@
 <title>Language Institute-Teachers</title>
 
 
-
 </head>
 
 <body id="page-top">
 
-	<jsp:include page="accountantHeader.jsp" />
+	<jsp:include page="receptionistHeader.jsp" />
 
 
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Language Institute-All Teachers
+			<i class="fas fa-table"></i> Language Institute-All Batches
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Firstname</th>
-							<th>Lastname</th>
-							<th>Address</th>
-							<th>Email</th>
-							<th>Contact</th>
-							<th>Status</th>
-							<th>Salary</th>
-							<th>Pay Salary</th>
+							<th>Batch ID</th>
+							<th>Name</th>
+							<th>View Routine</th>
+							
+			
 							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="teacher" items="${teacherList }">
+						<c:forEach var="batch" items="${batchList }">
 							<tr>
-								<td>${teacher.getId() }</td>
-								<td>${teacher.getFirstname() }</td>
-								<td>${teacher.getLastname() }</td>
-								<td>${teacher.getAddress() }</td>
-								<td>${teacher.getEmail() }</td>
-								<td>${teacher.getContact() }</td>
-								<td>${teacher.getSalary()}</td>
-								<td>${teacher.getStatus() }</td>
-								<td><a href="accountant/viewTeacherSlip?id=${teacher.getId()}" class="btn btn-success">Pay Salary</a>
+								<td>${batch.getId() }</td>
+								<td>${batch.getBatchId() }</td>
+								<td>${batch.getName() }</td>
+								
+								<td><a href="receptionist/viewRoutineBatch?id=${batch.getId()}" class="btn btn-primary">View Routine</a></td>
 									
-						
 							</tr>
 						</c:forEach>
 
@@ -77,11 +69,9 @@
 
 
 	<jsp:include page="footer.jsp" />
-	
+
 
 </body>
-
-
 
 </html>
 

@@ -116,5 +116,11 @@ public class ClassRoutineController {
 		return "redirect:/receptionist/viewRoutine";
 	}
 	
+	@RequestMapping(value="**/receptionist/viewRoutineBatch", method=RequestMethod.GET)
+	public String re_viewClassRoutine(@RequestParam("id")Long id, Model model) {
+		
+		model.addAttribute("classRoutine", classRoutineRepository.getRoutineByBatch(id)); 
+		return "receptionist_viewRoutineBatch";
+	}
 	
 }

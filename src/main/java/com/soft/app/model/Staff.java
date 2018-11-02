@@ -1,6 +1,6 @@
 package com.soft.app.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,7 +44,8 @@ public class Staff {
 	private String contact;
 	
 	@Column(name="added_date")
-	private Date date;
+	@Temporal(TemporalType.DATE)
+	private Date date;;
 	
 	@Column(name="status")
 	private String status;

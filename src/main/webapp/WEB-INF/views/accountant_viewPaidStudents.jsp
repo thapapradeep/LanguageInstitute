@@ -14,9 +14,21 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute-Teachers</title>
+<title>Language Institute-Students</title>
 
+<!-- Bootstrap core CSS-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- Page level plugin CSS-->
+<link href="vendor/datatables/dataTables.bootstrap4.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -28,40 +40,40 @@
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Language Institute-All Teachers
+			<i class="fas fa-table"></i> Langugae Institute-Remaining Students
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 					<thead>
 						<tr>
 							<th>Id</th>
+							<th>Batch</th>
 							<th>Firstname</th>
 							<th>Lastname</th>
 							<th>Address</th>
 							<th>Email</th>
 							<th>Contact</th>
 							<th>Status</th>
-							<th>Salary</th>
-							<th>Pay Salary</th>
+							<th>Added Date</th>
 							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="teacher" items="${teacherList }">
+						<c:forEach var="student" items="${studentList }">
 							<tr>
-								<td>${teacher.getId() }</td>
-								<td>${teacher.getFirstname() }</td>
-								<td>${teacher.getLastname() }</td>
-								<td>${teacher.getAddress() }</td>
-								<td>${teacher.getEmail() }</td>
-								<td>${teacher.getContact() }</td>
-								<td>${teacher.getSalary()}</td>
-								<td>${teacher.getStatus() }</td>
-								<td><a href="accountant/viewTeacherSlip?id=${teacher.getId()}" class="btn btn-success">Pay Salary</a>
-									
-						
+								<td>${student.getId() }</td>
+								<td>${student.getBatch().getBatchId() }</td>
+								<td>${student.getFirstname() }</td>
+								<td>${student.getLastname() }</td>
+								<td>${student.getAddress() }</td>
+								<td>${student.getEmail() }</td>
+								<td>${student.getContact() }</td>
+								<td>${student.getAddedDate() }</td>
+								<td>${student.getStatus() }</td>
+								
 							</tr>
 						</c:forEach>
 
@@ -80,8 +92,6 @@
 	
 
 </body>
-
-
 
 </html>
 

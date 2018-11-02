@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.soft.app.model.Staff;
 import com.soft.app.repository.RoleReopsitory;
 import com.soft.app.repository.StaffRepository;
+import com.soft.app.repository.StaffSalaryRepository;
 
 @Controller
 public class StaffController {
 	
 	@Autowired private StaffRepository staffrepository;
 	@Autowired private RoleReopsitory roleRepository;
+	@Autowired private StaffSalaryRepository staffSalary;
 	
 	@ModelAttribute("staff")
 	private Staff getStaff() {
@@ -33,7 +39,12 @@ public class StaffController {
 	}
 	
 	@RequestMapping(value="**/receptionist/add-addStaff" ,method=RequestMethod.POST)
-	private String addStaff(@ModelAttribute("Staff")Staff staff) {
+	private String addStaff(@ModelAttribute("Staff")Staff staff) throws Exception{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       staff.setDate(date1);
+       staff.setStatus("enabled");
 		staffrepository.save(staff);
 		return "redirect:/receptionist/viewStaffs";
 	}
@@ -51,9 +62,21 @@ public class StaffController {
 	}
 		@RequestMapping(value="**/accountant/viewStaffs", method=RequestMethod.GET)
 		private String loadViewAccountantStaff(Model model) {
-			model.addAttribute("staffList", staffrepository.findAll());
+			Calendar calendar=Calendar.getInstance();
+			int month=calendar.get(Calendar.MONTH);
+			int month1=month+1;
+			model.addAttribute("staffList", staffSalary.getUnPaidStaff(month1));
 			return "accountant_viewStaff";
 	}
+		@RequestMapping(value="**/accountant/viewPaidStaffs", method=RequestMethod.GET)
+		private String p_loadViewAccountantStaff(Model model) {
+			Calendar calendar=Calendar.getInstance();
+			int month=calendar.get(Calendar.MONTH);
+			int month1=month+1;
+			model.addAttribute("staffList", staffSalary.getPaidStaff(month1));
+			return "accountant_viewPaidStaff";
+	}
+		
 		@RequestMapping(value="**/admin/viewStaffs", method=RequestMethod.GET)
 		private String ad_loadViewAccountantStaff(Model model) {
 			model.addAttribute("staffList", staffrepository.findAll());

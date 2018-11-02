@@ -1,5 +1,9 @@
 package com.soft.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,13 +34,23 @@ public class LanguageController {
 	}
 	
 	@RequestMapping(value="**/receptionist/add-addLanguage", method=RequestMethod.POST)
-	public String saveLanguage(@ModelAttribute("language")Language language) {
+	public String saveLanguage(@ModelAttribute("language")Language language) throws Exception{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       language.setDate(date1);
+       language.setStatus("enabled");
 		languageRepository.save(language);
 		return "redirect:receptionist/viewLangauges";
 	}
 	
 	@RequestMapping(value="**/manager/add-addLanguage", method=RequestMethod.POST)
-	public String manager_saveLanguage(@ModelAttribute("language")Language language) {
+	public String manager_saveLanguage(@ModelAttribute("language")Language language)throws Exception {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date(); 
+        Date date1=dateFormat.parse(dateFormat.format(date));
+       language.setDate(date1);
+       language.setStatus("enabled");
 		languageRepository.save(language);
 		return "redirect:manager/viewLangauges";
 	}

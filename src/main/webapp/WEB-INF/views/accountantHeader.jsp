@@ -60,8 +60,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="studentsDropdown">
             
-            <a class="dropdown-item" href="accountant/viewStaffs">View Staff</a>
-            
+            <a class="dropdown-item" href="accountant/viewStaffs">View Unpaid Staff</a>
+            <a class="dropdown-item" href="accountant/viewPaidStaffs">View paid Staff</a>
           </div>
           </li>
        
@@ -75,8 +75,8 @@
           <div class="dropdown-menu" aria-labelledby="teachersDropdown">
             
             
-            <a class="dropdown-item" href="accountant/teachers">View Teachers</a>
-            
+            <a class="dropdown-item" href="accountant/teachers">View Unpaid Teachers</a>
+            <a class="dropdown-item" href="accountant/paidteachers">View Paid Teachers</a>
           </div>
         </li>
         
@@ -128,7 +128,9 @@
           
             <a class="dropdown-item" href="/accountant/addExpense">Add Expenditure</a>
             
-            <a class="dropdown-item" href="/accountant/viewTransaction">Add Expenditure</a>
+            <a class="dropdown-item" href="/accountant/viewTransaction">View Transaction History</a>
+            <a class="dropdown-item" href="accountant/viewPL">View PL Statement</a>
+            
             
           </div>
         </li>

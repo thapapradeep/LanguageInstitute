@@ -36,6 +36,7 @@
 							<th>Batch Name</th>
 							
 							<th>Action</th>
+							<th>Students</th>
 						</tr>
 					</thead>
 
@@ -55,6 +56,7 @@
 							   
 								<td><a href="manager/updateClass?id=${clas.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
 									href="manager/deleteClass?id=${clas.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
+							<td><a href="manager/viewClassStudent?id=${clas.getId()}" class="btn btn-success">View Students</a></td>
 							</tr>
 						</c:forEach>
 

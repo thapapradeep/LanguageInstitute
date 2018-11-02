@@ -67,7 +67,8 @@ public class ClassRoutineController {
 	
 	@RequestMapping(value="**/receptionist/viewRoutine", method=RequestMethod.GET)
 	public String re_viewRoutine(Model model) {
-		model.addAttribute("routineList", classRoutineRepository.findAll());
+		model.addAttribute("routineList", classRoutineRepository.getRoutineByBatch(Long.parseLong(String.valueOf(1))));
+		model.addAttribute("routineList1", classRoutineRepository.getRoutineByBatch(Long.parseLong(String.valueOf(7))));
 		return "receptionist_viewRoutine";	
 	}
 	

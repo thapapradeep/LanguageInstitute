@@ -109,7 +109,7 @@ public class ClassController {
 		int day=calendar.get(Calendar.DAY_OF_WEEK);
 		System.out.println(day);
 		model.addAttribute("classList", classsRoutineRepository.getRoutineByDay(new Long(day),new Long(1)));
-		model1.addAttribute("classList1", classsRoutineRepository.getRoutineByDay(new Long(day),new Long(2)));
+		model1.addAttribute("classList1", classsRoutineRepository.getRoutineByDay(new Long(day),new Long(7)));
 		return "receptionist_todayClass";
 	}
 		
@@ -178,10 +178,23 @@ public class ClassController {
 		return "manager_viewBatchStudent";
 	}
 	
+	@RequestMapping(value="**/accountant/viewStudentBatch",method=RequestMethod.GET)
+	public String a_viewBatchStudent(@RequestParam("id")Long id, Model model) {
+		model.addAttribute("studentlist", classRepository.getStudentByBatch(id));
+		return "accountant_viewStudent";
+	}
+	
+	
 	@RequestMapping(value="**/manager/viewClassBatch",method=RequestMethod.GET)
 	public String ma_viewBatchStudent(@RequestParam("id")Long id, Model model) {
 		model.addAttribute("classList", classRepository.getClassByBatch(id));
 		return "manager_viewBatchClass";
+	}
+	
+	@RequestMapping(value="**/accountant/viewClassBatch",method=RequestMethod.GET)
+	public String acc_viewBatchStudent(@RequestParam("id")Long id, Model model) {
+		model.addAttribute("ClassList", classRepository.getClassByBatch(id));
+		return "accountant_viewClass";
 	}
 	
 	

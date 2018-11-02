@@ -71,6 +71,16 @@ public class StudentClassController {
 		return "accountSendMail";
 	}
 	
+	@RequestMapping(value="**/manager/viewClassStudent", method=RequestMethod.GET)
+	public String manager_loadStudentByClass(@RequestParam("id")Long id, Model model) {
+		model.addAttribute("studentlist", studentClassRepository.getStudentByClasss(id));
+		return "manager_viewStudent";
+	}
 	
-
+	
+	@RequestMapping(value="**/receptionist/viewClassStudent", method=RequestMethod.GET)
+	public String receptionist_loadStudentByClass(@RequestParam("id")Long id, Model model) {
+		model.addAttribute("studentlist", studentClassRepository.getStudentByClasss(id));
+		return "receptionist_viewStudent";
+	}
 }

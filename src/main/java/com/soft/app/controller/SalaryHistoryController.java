@@ -71,7 +71,7 @@ public class SalaryHistoryController {
 		ts.setStatus("expense");
 		ts.setAmount(amount);
 		transactionRepository.save(ts);
-		 return "redirect:accountant/viewStaffSlip&id="+id;
+		 return "redirect:accountant/viewStaffSlip?id="+id;
 	}
 	
 	@RequestMapping(value="**/accountant/payTeacher", method= {RequestMethod.POST, RequestMethod.GET})
@@ -92,6 +92,7 @@ public class SalaryHistoryController {
 		
        
 		ts.setParticular("Teacher Salary Payment");
+		ts.setDate(date1);
 		  double balance=transactionRepository.getBalance();
 	       double newbalance=balance-amount;
 	       ts.setBalance(newbalance);

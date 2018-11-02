@@ -50,6 +50,7 @@
 						<tr>
 							<th>Id</th>
 							<th>Batch Name</th>
+							<th>Class Name</th>
 							<th>Classroom Number</th>
 							<th>Start Time </th>
 							<th>End Time</th>
@@ -60,6 +61,7 @@
 							<th>Teacher's Salary</th>
 							<th>Action</th>
 							 <th>Add Students To This Class</th>
+							 <th>View Students</th>
 							
 							
 						</tr>
@@ -70,6 +72,7 @@
 							<tr>
 								<td>${clas.getId() }</td>
 								<td>${clas.getBatch().getName() }</td>
+								<td>${clas.getClassName()} </td>
 								<td>${clas.getClassroomNo() }</td>
 								<td>${clas.getStartTime() }</td>
 								<td>${clas.getEndTime() }</td>
@@ -82,6 +85,7 @@
 							   
 								<td><a href="receptionist/updateClass?id=${clas.getId()}" class="btn btn-success">Update</a></td>
 								<td><a href="receptionist/addStudentClass?class_id=${clas.getId()}&batch_id=${clas.getBatch().getId()}" class="btn btn-success">Add Students</a></td>
+							<td><a href="receptionist/viewClassStudent?id=${clas.getId()}" class="btn btn-success">Add Students</a></td>
 							</tr>
 						</c:forEach>
 

@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute- Add User</title>
+<title>Language Institute- Add Class</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -123,7 +123,7 @@
 								
 
 
-								<button class="btn btn-success" type="submit">Add User</button>
+								<button class="btn btn-success" type="submit">Add Class</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
 							</form:form>
 							

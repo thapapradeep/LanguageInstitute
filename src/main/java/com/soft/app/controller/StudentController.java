@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.soft.app.model.Student;
+import com.soft.app.repository.BatchRepository;
 import com.soft.app.repository.StudentRepository;
 
 @Controller
 
 public class StudentController {
 	@Autowired private StudentRepository studentRepository;
+	@Autowired  private BatchRepository batchRepository;
 	
 	@ModelAttribute("student")
 	public Student getStudent() {
@@ -25,7 +27,8 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="**/receptionist/addStudent")
-	public String loadAddStudentForm() {
+	public String loadAddStudentForm(Model model) {
+		model.addAttribute("batchList", batchRepository.findAll());
 		return"receptionist_addStudent";
 	}
 	

@@ -55,6 +55,12 @@ public class BatchController {
 		return"receptionist_viewBatch";
 	}
 	
+	@RequestMapping(value="**/accountant/viewBatch", method=RequestMethod.GET)
+	public String a_loadViewBatchPage( Model model) {
+		model.addAttribute("batchList", batchRepository.findAll());
+		return"accountant_viewBatch";
+	}
+	
 	
 	@RequestMapping(value="**/manager/updateBatch", method=RequestMethod.GET)
 	public String loadBatchUpdatePage(@RequestParam("id")Long id, Model model) {

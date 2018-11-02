@@ -72,7 +72,7 @@
 								<td>${student.getContact() }</td>
 								<td>${student.getAddedDate() }</td>
 								<td>${student.getStatus() }</td>
-								<td><a href="receptionist/add-addStudentClass?id=${student.getId()}&class_id=${clas.getId()}" class="btn btn-success">Add To Class</a>|
+								<td><a href="receptionist/add-addStudentClass?id=${student.getId()}&class_id=${clas.getId()}" class="btn btn-success">Add To Class</a>
 									</td>
 							</tr>
 						</c:forEach>

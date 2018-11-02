@@ -133,7 +133,7 @@ public class UserController {
 		int day=calendar.get(Calendar.DAY_OF_WEEK);
 		System.out.println(day);
 		model.addAttribute("classList", classRoutineReopsitory.getRoutineByDay(new Long(day),new Long(1)));
-		model1.addAttribute("classList1", classRoutineReopsitory.getRoutineByDay(new Long(day),new Long(2)));
+		model1.addAttribute("classList1", classRoutineReopsitory.getRoutineByDay(new Long(day),new Long(7)));
 		return "receptionistdashboard";
 	}
 	

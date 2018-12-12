@@ -186,7 +186,19 @@
           <div class="dropdown-menu" aria-labelledby="studentsDropdown">
             
             <a class="dropdown-item" href="manager/addBatch">Add Batch</a>
-            <a class="dropdown-item" href="manager/viewBatch">View view</a>
+            <a class="dropdown-item" href="manager/viewBatch">View Batch</a>
+            
+          </div>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Class Routine</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="studentsDropdown">
+            
+            <a class="dropdown-item" href="manager/createRoutine">Add Routine</a>
+            <a class="dropdown-item" href="manager/viewRoutine">View Routine</a>
             
           </div>
         </li>

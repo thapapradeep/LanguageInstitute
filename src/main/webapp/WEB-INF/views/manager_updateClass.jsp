@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Language Institute- Add User</title>
+    <title>Language Institute- Update Class</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -56,13 +56,13 @@
          				<div class="row">
          				
          					<div class="col-lg-offset-3 col-lg-6">
-         						<form:form action="update-updateClass" method="POST" modelAttribute="clas">
+         						<form:form action="manager/update-updateClass" method="POST" modelAttribute="clas">
          							<div class="form-group">
          							
          							<form:hidden path="id" value="${clas.getId() }"/>
-         								<label>Batch Name</label>
-         								<form:input path="batchName" class="form-control" value="${clas.getBatchName()}"/>
-         								<form:errors path="batchName" cssClass="error"/>
+         								<div class="form-group">
+         								<label>Select Batch</label>
+         								<form:select path="batch" items="${batchList}" itemLabel="name" itemValue="id"  class="form-control" value="${clas.getBatch().getName()}"/>
          							</div>
          							
          							<div class="form-group">

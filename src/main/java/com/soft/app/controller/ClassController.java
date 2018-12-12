@@ -22,6 +22,7 @@ import com.soft.app.repository.BatchRepository;
 import com.soft.app.repository.ClassesRepository;
 import com.soft.app.repository.LanguageRepository;
 import com.soft.app.repository.TeacherLanguageRepository;
+import com.soft.app.repository.TeacherRepository;
 
 
 @Controller
@@ -30,6 +31,7 @@ public class ClassController {
 	@Autowired private ClassesRepository classRepository;
 	@Autowired private BatchRepository batchRepository;
 	@Autowired private LanguageRepository languageRepository;
+	@Autowired private TeacherRepository teacherRepository;
 	@Autowired private TeacherLanguageRepository teacherLanguageRepo;
 	
 	@ModelAttribute("clas")
@@ -95,11 +97,12 @@ public class ClassController {
 	
 	
 	@RequestMapping(value="**/manager/updateClass", method=RequestMethod.GET)
-	private String loadUpdateClassForm( @RequestParam("id")Long id, Model model, Model model1, Model model2) {
+	private String loadUpdateClassForm( @RequestParam("id")Long id, Model model, Model model1, Model model2, Model model3) {
       Optional<classes> clas=classRepository.findById(id);
       classes c=clas.get();
       model.addAttribute("clas", c);
       model1.addAttribute("languageList", languageRepository.findAll());
+      model3.addAttribute("teacherList", teacherRepository.findAll());
       model2.addAttribute("batchList", batchRepository.findAll());
       
 	return "manager_updateClass";
@@ -107,12 +110,13 @@ public class ClassController {
 		
 	}
 	@RequestMapping(value="**/receptionist/updateClass", method=RequestMethod.GET)
-	private String rec_loadUpdateClassForm( @RequestParam("id")Long id, Model model, Model model1, Model model2) {
+	private String rec_loadUpdateClassForm( @RequestParam("id")Long id, Model model, Model model1, Model model2, Model model3) {
       Optional<classes> clas=classRepository.findById(id);
       classes c=clas.get();
       model.addAttribute("clas", c);
-      model1.addAttribute("languageList", languageRepository.findAll());
-      model2.addAttribute("batchList", batchRepository.findAll());
+      model1.addAttribute("teacherList", teacherRepository.findAll());
+      model2.addAttribute("languageList", languageRepository.findAll());
+      model3.addAttribute("batchList", batchRepository.findAll());
       
 	return "receptionist_updateClass";
 		

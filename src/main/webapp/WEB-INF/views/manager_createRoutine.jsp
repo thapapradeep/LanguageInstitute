@@ -15,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute- Add User</title>
+<title>Language Institute- Add Routine</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
 					<div class="row">
 
 						<div class="col-lg-offset-3 col-lg-6">
-							<form:form action="manager/add-addClass" method="POST"
+							<form:form action="manager/add-addRoutine" method="POST"
 								modelAttribute="classRoutine">
 								<div class="form-group">
 								
@@ -92,7 +92,7 @@
 								
 
 
-								<button class="btn btn-success" type="submit">Gita Thapa</button>
+								<button class="btn btn-success" type="submit">Add Routine ofr the Day</button>
 								<button class="btn btn-primary" type="reset">Reset</button>
 							</form:form>
 							

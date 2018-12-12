@@ -60,9 +60,10 @@
          							<div class="form-group">
          							
          							<form:hidden path="id" value="${clas.getId() }"/>
-         								<label>Batch Name</label>
-         								<form:input path="batchName" class="form-control" value="${clas.getBatchName()}"/>
-         								<form:errors path="batchName" cssClass="error"/>
+         								<form:hidden path="id" value="${clas.getId() }"/>
+         								<div class="form-group">
+         								<label>Select Batch</label>
+         								<form:select path="batch" items="${batchList}" itemLabel="name" itemValue="id"  class="form-control" value="${clas.getBatch().getName()}"/>
          							</div>
          							
          							<div class="form-group">

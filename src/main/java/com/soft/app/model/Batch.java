@@ -30,6 +30,9 @@ public class Batch {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch" )
 	private List<classes>classes=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch1" )
+	private List<ClassRoutine>classRoutine=new ArrayList<>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -54,5 +57,12 @@ public class Batch {
 	public void setClasses(List<classes> classes) {
 		this.classes = classes;
 	}
+	public List<ClassRoutine> getClassRoutine() {
+		return classRoutine;
+	}
+	public void setClassRoutine(List<ClassRoutine> classRoutine) {
+		this.classRoutine = classRoutine;
+	}
 
+	
 }

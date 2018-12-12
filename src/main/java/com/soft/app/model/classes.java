@@ -71,6 +71,17 @@ public class classes {
 	@JsonIgnore
 	private List<StudentClass>studentclass=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="class1")
+	@JsonIgnore
+	private List<ClassRoutine>classRoutine1=new ArrayList<>();
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="class2")
+	@JsonIgnore
+	private List<ClassRoutine>classRoutine2=new ArrayList<>();
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="class3")
+	@JsonIgnore
+	private List<ClassRoutine>classRoutine3=new ArrayList<>();
 	
 	
 	public Long getId() {
@@ -160,6 +171,30 @@ public class classes {
 
 	public void setBatch(Batch batch) {
 		this.batch = batch;
+	}
+
+	public List<ClassRoutine> getClassRoutine1() {
+		return classRoutine1;
+	}
+
+	public void setClassRoutine1(List<ClassRoutine> classRoutine1) {
+		this.classRoutine1 = classRoutine1;
+	}
+
+	public List<ClassRoutine> getClassRoutine2() {
+		return classRoutine2;
+	}
+
+	public void setClassRoutine2(List<ClassRoutine> classRoutine2) {
+		this.classRoutine2 = classRoutine2;
+	}
+
+	public List<ClassRoutine> getClassRoutine3() {
+		return classRoutine3;
+	}
+
+	public void setClassRoutine3(List<ClassRoutine> classRoutine3) {
+		this.classRoutine3 = classRoutine3;
 	}
 	
 

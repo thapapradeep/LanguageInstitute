@@ -54,8 +54,8 @@
 							<th>Address</th>
 							<th>Email</th>
 							<th>Contact</th>
-							<th>Status</th>
 							<th>Added Date</th>
+							<th>Status</th>
 							<th>Action</th>
 						</tr>
 					</thead>

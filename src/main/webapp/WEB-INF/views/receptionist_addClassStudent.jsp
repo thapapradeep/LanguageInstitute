@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute-Classes</title>
+<title>Language Institute-Students</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,50 +40,43 @@
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Language Institute-All Classes
+			<i class="fas fa-table"></i>Language Institute-Assign student to class
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
+			<a href="receptionist/viewClasses" class="btn btn-success">Finish</a>
 				<table class="table table-bordered" id="dataTable" width="100%"
 					cellspacing="0">
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Batch Name</th>
-							<th>Classroom Number</th>
-							<th>Start Time </th>
-							<th>End Time</th>
-							<th>Duration</th>
-							<th>Language</th>
-							<th>Teacher</th>
-							<th>Student's Fee</th>
-							<th>Teacher's Salary</th>
-							<td>Action</td>
-							 <td>Add Students To This Class</td>
-							
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Address</th>
+							<th>Email</th>
+							<th>Contact</th>
+							<th>Status</th>
+							<th>Added Date</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="clas" items="${ClassList }">
+						<c:forEach var="student" items="${studentList}">
 							<tr>
-								<td>${clas.getId() }</td>
-								<td>${clas.getBatch().getName() }</td>
-								<td>${clas.getClassroomNo() }</td>
-								<td>${clas.getStartTime() }</td>
-								<td>${clas.getEndTime() }</td>
-								<td>${clas.getDuration() }</td>
-							    <td>${clas.getLanguage().getLanguage() }</td>
-							    <td>${clas.getTeacher().getFirstname() }</td>
-							    <td>${clas.getStudentFee() }</td>
-							    <td>${clas.getTeacherSalary() }</td>
-							    
-							   
-								<td><a href="receptionist/updateClass?id=${clas.getId()}" class="btn btn-success">Update</a></td>
-								<td><a href="receptionist/addStudentClass?class_id=${clas.getId()}" class="btn btn-success">Add Students</a></td>
+								<td>${student.getId() }</td>
+								<td>${student.getFirstname() }</td>
+								<td>${student.getLastname() }</td>
+								<td>${student.getAddress() }</td>
+								<td>${student.getEmail() }</td>
+								<td>${student.getContact() }</td>
+								<td>${student.getAddedDate() }</td>
+								<td>${student.getStatus() }</td>
+								<td><a href="receptionist/add-addStudentClass?id=${student.getId()}&class_id=${clas.getId()}" class="btn btn-success">Add To Class</a>|
+									</td>
 							</tr>
 						</c:forEach>
+						
 
 					</tbody>
 				</table>
@@ -97,7 +90,8 @@
 
 
 	<jsp:include page="footer.jsp" />
-	
+
+
 </body>
 
 </html>

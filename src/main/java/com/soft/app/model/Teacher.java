@@ -1,5 +1,6 @@
 package com.soft.app.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -41,6 +42,9 @@ public class Teacher{
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="salary")
+	private double salary;
+	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true,mappedBy="teacher")
 	@JsonIgnore
 	private List<TeacherLanguage> teacherlanguage=new ArrayList<>();
@@ -53,11 +57,18 @@ public class Teacher{
 	@JsonIgnore
 	private List<TeacherAttendence>teacherAttendence=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true,mappedBy="teacher")
+	@JsonIgnore
+	private List<TeacherSalaryHistory> teacherSalary=new ArrayList<>();
+	
 
 
 
 
 
+	@Column(name="added_date")
+	private Date date;
+	
 	@Column(name="status")
 	private String status;
 	
@@ -94,6 +105,15 @@ public class Teacher{
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 
 	public String getContact() {
@@ -144,6 +164,23 @@ public class Teacher{
 	public void setTeacherAttendence(List<TeacherAttendence> teacherAttendence) {
 		this.teacherAttendence = teacherAttendence;
 	}
+
+	public List<TeacherSalaryHistory> getTeacherSalary() {
+		return teacherSalary;
+	}
+
+	public void setTeacherSalary(List<TeacherSalaryHistory> teacherSalary) {
+		this.teacherSalary = teacherSalary;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
 	
 	
 

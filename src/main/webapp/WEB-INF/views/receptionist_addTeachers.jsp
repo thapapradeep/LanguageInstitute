@@ -77,6 +77,11 @@
          								<form:input path="contact" class="form-control" placeholder="Enter contact number"/>
          							</div>
          							
+         							<div class="form-group">
+         								<label>Monthly Salary</label>
+         								<form:input path="salary" class="form-control" placeholder="Enter Monthly salary"/>
+         							</div>
+         							
          							
          							<button class="btn btn-success" type="submit">Add Teacher</button>
          							<button class="btn btn-primary" type="reset">Reset</button>

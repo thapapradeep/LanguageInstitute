@@ -1,5 +1,6 @@
 package com.soft.app.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,12 @@ public class Language {
 	
 	@Column(name="language", nullable=false)
 	private String language;
+	
+	@Column(name="added_date")
+	private Date date;
+	
+	@Column(name="status")
+	private String status;
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true,mappedBy="language")
 	@JsonIgnore
@@ -67,6 +74,22 @@ public class Language {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 

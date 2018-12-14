@@ -1,5 +1,6 @@
 package com.soft.app.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,12 @@ public class Batch {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch1" )
 	private List<ClassRoutine>classRoutine=new ArrayList<>();
 	
+	@Column(name="added_date")
+	private Date date;
+	
+	@Column(name="status")
+	private String status;
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +69,18 @@ public class Batch {
 	}
 	public void setClassRoutine(List<ClassRoutine> classRoutine) {
 		this.classRoutine = classRoutine;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	

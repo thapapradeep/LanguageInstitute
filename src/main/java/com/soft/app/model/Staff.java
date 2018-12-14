@@ -1,5 +1,6 @@
 package com.soft.app.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="staff")
@@ -38,6 +41,11 @@ public class Staff {
 	@Column(name="conatct")
 	private String contact;
 	
+	@Column(name="added_date")
+	private Date date;
+	
+	@Column(name="status")
+	private String status;
 	
 
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -47,6 +55,10 @@ public class Staff {
 	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true,mappedBy="staff")
 	private List<StaffAttendence> staffs=new ArrayList<>();
+	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true,mappedBy="staff")
+	@JsonIgnore
+	private List<StaffSalaryHistory> staffSalary=new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -109,6 +121,30 @@ public class Staff {
 
 	public void setStaffs(List<StaffAttendence> staffs) {
 		this.staffs = staffs;
+	}
+
+	public List<StaffSalaryHistory> getStaffSalary() {
+		return staffSalary;
+	}
+
+	public void setStaffSalary(List<StaffSalaryHistory> staffSalary) {
+		this.staffSalary = staffSalary;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

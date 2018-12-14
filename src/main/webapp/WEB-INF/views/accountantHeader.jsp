@@ -152,6 +152,18 @@
             
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Transaction</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="studentsDropdown">
+            
+          
+            <a class="dropdown-item" href="accountant/addExpense">Add Expenditure</a>
+            
+          </div>
+        </li>
        
       </ul>
 

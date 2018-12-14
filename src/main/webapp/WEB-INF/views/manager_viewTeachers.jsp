@@ -54,12 +54,14 @@
 							<th>Email</th>
 							
 							<th>Contact</th>
+							<th>Salary</th>
 							<th>Status</th>
 							
 							
 							<th>Action</th>
 							<th>Add Language Skill </th>
 							<th>View Attendance History</th>
+							<th>View Salary History</th>
 						</tr>
 					</thead>
 
@@ -72,6 +74,7 @@
 								<td>${teacher.getAddress() }</td>
 								<td>${teacher.getEmail() }</td>
 								<td>${teacher.getContact() }</td>
+								<td>${teacher.getSalary() }</td>
 								<td>${teacher.getStatus() }</td>
 								
 								<td><a href="manager/updateTeachers?id=${teacher.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
@@ -79,6 +82,7 @@
 									
 						<td><a href="manager/teacherlanguages?id=${teacher.getId()}" class="btn btn-primary">Add Language</a></td>
 						<td><a href="manager/viewTeacherAttencence?id=${teacher.getId()}" class="btn btn-primary">View</a></td>
+							<td><a href="manager/teacherHistory?id=${teacher.getId()}" class="btn btn-primary">View</a></td>
 							</tr>
 						</c:forEach>
 

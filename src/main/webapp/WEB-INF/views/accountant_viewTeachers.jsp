@@ -52,12 +52,11 @@
 							<th>Lastname</th>
 							<th>Address</th>
 							<th>Email</th>
-							
 							<th>Contact</th>
 							<th>Status</th>
+							<th>Salary</th>
+							<th>Pay Salary</th>
 							
-							<th>Action</th>
-							<th>Add Language Skill </th>
 						</tr>
 					</thead>
 
@@ -70,10 +69,9 @@
 								<td>${teacher.getAddress() }</td>
 								<td>${teacher.getEmail() }</td>
 								<td>${teacher.getContact() }</td>
-								
-								
+								<td>${teacher.getSalary()}</td>
 								<td>${teacher.getStatus() }</td>
-								
+								<td><a href="accountant/payTeacher?id=${teacher.getId()}&amount=${teacher.getSalary()}" class="btn btn-success">Pay Salary</a>
 									
 						
 							</tr>

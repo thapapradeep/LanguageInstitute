@@ -54,6 +54,7 @@
 							<th>Email</th>
 							
 							<th>Contact</th>
+							<th>Salary</th>
 							<th>Status</th>
 							
 							<th>Action</th>
@@ -70,6 +71,7 @@
 								<td>${teacher.getAddress() }</td>
 								<td>${teacher.getEmail() }</td>
 								<td>${teacher.getContact() }</td>
+								<td>${teacher.getSalary() }</td>
 								
 								
 								<td>${teacher.getStatus() }</td>

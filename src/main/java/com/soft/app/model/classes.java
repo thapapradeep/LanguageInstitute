@@ -1,5 +1,6 @@
 package com.soft.app.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +67,12 @@ public class classes {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="batch_id")
 	private Batch batch;
+	
+	@Column(name="added_date")
+	private Date date;
+	
+	@Column(name="status")
+	private String status;
 	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="classes")
 	@JsonIgnore
@@ -211,6 +218,22 @@ public class classes {
 
 	public void setStudentAttendence(List<StudentAttendence> studentAttendence) {
 		this.studentAttendence = studentAttendence;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 

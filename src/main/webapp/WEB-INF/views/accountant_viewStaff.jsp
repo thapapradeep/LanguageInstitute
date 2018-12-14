@@ -29,7 +29,7 @@
 							<th>Address</th>
 							<th>Email</th>
 							<th>Contact</th>
-							
+							<th>Salary</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -43,6 +43,8 @@
 								<td>${staff.getAddress() }</td>
 								<td>${staff.getEmail() }</td>
 								<td>${staff.getContact() }</td>
+								<td>${staff.getRole().getSalary()}</td>
+								<td><a href="accountant/paySatff?id=${staff.getId()}&amount=${staff.getRole().getSalary()}" class="btn btn-success">Pay Salary</a>
 							
 							
 							</tr>

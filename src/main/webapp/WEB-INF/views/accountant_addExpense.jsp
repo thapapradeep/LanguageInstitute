@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Language Institute-Update Teacher</title>
+    <title>Language Institute- Add Language</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,10 +29,11 @@
     <link href="css/sb-admin.css" rel="stylesheet">
 
   </head>
+  
 
   <body id="page-top">
 
-   <jsp:include page="receptionistHeader.jsp"/>
+   <jsp:include page="accountantHeader.jsp"/>
           <!-- Area Chart Example-->
          
          <div class="row">
@@ -41,7 +42,7 @@
          		<div class="panel panel-default">
          		
          			<div class="panel-heading">
-         				Language Institute-Update Teacher Form
+         				Language Institute-Add Role Form
          			</div>
          			<hr/>
          			
@@ -49,41 +50,22 @@
          				<div class="row">
          				
          					<div class="col-lg-offset-3 col-lg-6">
-         						<form:form action="update-updateTeacher" method="POST" modelAttribute="teacher">
+         						<form:form action="accountant/add-addExpense" method="POST" modelAttribute="transaction">
+         							<div class="form-group">
+         								<label>Heading of Expense</label>
+         								<form:input path="particular" class="form-control" placeholder="Enter subject of expenditure"/>
+         								
+         							</div>
+         							<div class="form-group">
+         								<label>Amount </label>
+         								<form:input path="amount" class="form-control" placeholder="Enter amount in number"/>
+         								
+         							</div>
          						
-         							<form:hidden path="id" value="${teacher.getId() }"/>
-         							<div class="form-group">
-         								<label>Firstname</label>
-         								<form:input path="firstname" class="form-control" value="${teacher.getFirstname() }" />
-         							</div>
          							
-         							<div class="form-group">
-         								<label>Lastname</label>
-         								<form:input path="lastname" class="form-control" value="${teacher.getLastname() }"/>
-         							</div>
+         						
          							
-         							<div class="form-group">
-         								<label>Address</label>
-         								<form:input path="address" class="form-control" value="${teacher.getAddress() }" />
-         							</div>
-         							
-         							<div class="form-group">
-         								<label>Email</label>
-         								<form:input path="email" class="form-control" value="${teacher.getEmail() }" />
-         							</div>
-         							
-         							
-         							<div class="form-group">
-         								<label>Contact Number</label>
-         								<form:input path="contact" class="form-control" value="${teacher.getContact() }"/>
-         							</div>
-         							
-         							<div class="form-group">
-         								<label>Salary</label>
-         								<form:input path="salary" class="form-control" value="${teacher.getSalary() }"/>
-         							</div>
-         							
-         							<button class="btn btn-success" type="submit">Update Teacher</button>
+         							<button class="btn btn-success" type="submit">Add Expenses</button>
          							<button class="btn btn-primary" type="reset">Reset</button>
          						</form:form>
          					</div>
@@ -99,7 +81,8 @@
          
                 
        <jsp:include page="footer.jsp"/>
- 
+  pt>
+    <script src="js/demo/chart-area-demo.js"></script>
 
   </body>
 

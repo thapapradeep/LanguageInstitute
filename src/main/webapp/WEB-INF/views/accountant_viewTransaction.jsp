@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute-Students</title>
+<title>Language Institute-Teachers</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,13 +34,13 @@
 
 <body id="page-top">
 
-	<jsp:include page="managerHeader.jsp" />
+	<jsp:include page="accountantHeader.jsp" />
 
 
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Langugae Institute-All Staffs
+			<i class="fas fa-table"></i> Language Institute-All Roles
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -49,31 +49,23 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Firstname</th>
-							<th>Lastname</th>
-							<th>Address</th>
-							<th>Email</th>
-							<th>Contact</th>
-							<th>Action</th>
-							<th>View Attendance History</th>
-							<th>View Salary History</th>
+							<th>Date</th>
+							<th>Particulars</th>
+							<th>Amount</th>
+							<th>Status</th>
+							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="staff" items="${staffList }">
+						<c:forEach var="transaction" items="${transactionList }">
 							<tr>
-								<td>${staff.getId() }</td>
-								<td>${staff.getFirstname() }</td>
-								<td>${staff.getLastname() }</td>
-								<td>${staff.getAddress() }</td>
-								<td>${staff.getEmail() }</td>
-								<td>${staff.getContact() }</td>
+								<td>${transaction.getId() }</td>
+								<td>${transaction.getDate() }</td>
+								<td>${transaction.getParticular() }</td>
+								<td>${transaction.getAmount() }</td>
+								<td>${transaction.getStatus() }</td>
 							
-								<td><a href="manager/updateStaff?id=${staff.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
-									href="manager/deleteStaffs?id=${staff.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
-									<td><a href="manager/viewStaffAttendence?id=${staff.getId()}" class="btn btn-success">View</a></td>
-									<td><a href="manager/staffHistory?id=${staff.getId()}" class="btn btn-success">View</a></td>
 							</tr>
 						</c:forEach>
 

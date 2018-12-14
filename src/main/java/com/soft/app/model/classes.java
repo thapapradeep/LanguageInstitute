@@ -83,6 +83,14 @@ public class classes {
 	@JsonIgnore
 	private List<ClassRoutine>classRoutine3=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="classes4")
+	@JsonIgnore
+	private List<StudentAttendence>studentAttendence=new ArrayList<>();
+	
+	
+
+	
+	
 	
 	public Long getId() {
 		return id;
@@ -195,6 +203,14 @@ public class classes {
 
 	public void setClassRoutine3(List<ClassRoutine> classRoutine3) {
 		this.classRoutine3 = classRoutine3;
+	}
+
+	public List<StudentAttendence> getStudentAttendence() {
+		return studentAttendence;
+	}
+
+	public void setStudentAttendence(List<StudentAttendence> studentAttendence) {
+		this.studentAttendence = studentAttendence;
 	}
 	
 

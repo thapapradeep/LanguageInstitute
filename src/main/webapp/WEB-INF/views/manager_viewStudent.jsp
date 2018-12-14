@@ -57,6 +57,7 @@
 							<th>Status</th>
 							<th>Added Date</th>
 							<th>Action</th>
+							<th>View Class</th>
 						</tr>
 					</thead>
 
@@ -73,6 +74,7 @@
 								<td>${student.getStatus() }</td>
 								<td><a href="manager/updateStudents?id=${student.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
 									href="manager/deleteStudents?id=${student.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
+							<td><a href="manager/viewStudentClass?id=${student.getId()}" class="btn btn-success">View</a></td>
 							</tr>
 						</c:forEach>
 

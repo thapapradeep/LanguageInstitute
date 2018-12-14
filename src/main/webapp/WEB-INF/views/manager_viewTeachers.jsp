@@ -56,8 +56,10 @@
 							<th>Contact</th>
 							<th>Status</th>
 							
+							
 							<th>Action</th>
 							<th>Add Language Skill </th>
+							<th>View Attendance History</th>
 						</tr>
 					</thead>
 
@@ -70,13 +72,13 @@
 								<td>${teacher.getAddress() }</td>
 								<td>${teacher.getEmail() }</td>
 								<td>${teacher.getContact() }</td>
-								
-								
 								<td>${teacher.getStatus() }</td>
+								
 								<td><a href="manager/updateTeachers?id=${teacher.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
 									href="manager/deleteTeachers?id=${teacher.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
 									
-						<td><a href="manager/teacherlanguages?id=${teacher.getId()}" class="btn btn-primary"><span class="fa fa-edit"></span></a></td>
+						<td><a href="manager/teacherlanguages?id=${teacher.getId()}" class="btn btn-primary">Add Language</a></td>
+						<td><a href="manager/viewTeacherAttencence?id=${teacher.getId()}" class="btn btn-primary">View</a></td>
 							</tr>
 						</c:forEach>
 

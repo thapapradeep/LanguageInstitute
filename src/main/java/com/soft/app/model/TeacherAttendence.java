@@ -26,6 +26,8 @@ public class TeacherAttendence {
 	private Teacher teacher;
 	
 	
+	
+	
 	public long getId() {
 		return id;
 	}

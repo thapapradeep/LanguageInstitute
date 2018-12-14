@@ -40,7 +40,7 @@
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Langugae Institute-All Staffs
+			<i class="fas fa-table"></i> Language Institute-Teacher Attendance
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -49,30 +49,22 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Firstname</th>
-							<th>Lastname</th>
-							<th>Address</th>
-							<th>Email</th>
+							<th>Teacher Name</th>
 							<th>Contact</th>
-							<th>Action</th>
-							<th>View Attendance History</th>
+							<th>Date</th>
+							<th>Status</th>
+							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="staff" items="${staffList }">
+						<c:forEach var="teacher" items="${teacherAttendenceList}">
 							<tr>
-								<td>${staff.getId() }</td>
-								<td>${staff.getFirstname() }</td>
-								<td>${staff.getLastname() }</td>
-								<td>${staff.getAddress() }</td>
-								<td>${staff.getEmail() }</td>
-								<td>${staff.getContact() }</td>
-							
-								<td><a href="manager/updateStaff?id=${staff.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
-									href="manager/deleteStaffs?id=${staff.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
-									<td><a href="manager/viewStaffAttendence?id=${staff.getId()}" class="btn btn-success">View</a></td>
-									
+								<td>${teacher.getId()}</td>
+								<td>${teacher.getTeacher().getFirstname()} </td>
+								<td>${teacher.getTeacher().getContact() }</td>
+								<td>${teacher.getDate() }</td>
+								<td>${teacher.getStatus() }</td>
 							</tr>
 						</c:forEach>
 
@@ -80,7 +72,8 @@
 				</table>
 			</div>
 		</div>
-		
+		<div class="card-footer small text-muted">Updated yesterday at
+			11:59 PM</div>
 	</div>
 
 	</div>
@@ -88,12 +81,10 @@
 
 
 	<jsp:include page="footer.jsp" />
-
+	
 
 </body>
 
 </html>
 
 
-</body>
-</html>

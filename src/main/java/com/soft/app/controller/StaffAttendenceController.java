@@ -52,4 +52,11 @@ private String absentStaff(@RequestParam("id") Long id) {
 	staffAttendenceReposiory.save(sa);
 	return "redirect:/receptionist/staffAttendences";
 }
+
+@RequestMapping(value="**/manager/viewStaffAttendence")
+public String loadStaffAttendenceHistory(@RequestParam("id")Long id,Model model) {
+	model.addAttribute("staffList", staffAttendenceReposiory.getStaffAttendenceHistory(id));
+	return "manager_viewStaffAttendence";
+}
+
 }

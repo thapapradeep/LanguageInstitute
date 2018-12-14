@@ -48,7 +48,7 @@ public class StudentController {
 	public String viewAllStudents(Model model) {
 		
 		model.addAttribute("studentlist" ,studentRepository.findAll());
-		return "manager/viewStudent";
+		return "manager_viewStudent";
 	}
 	
 	

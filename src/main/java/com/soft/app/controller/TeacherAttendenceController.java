@@ -52,4 +52,10 @@ public class TeacherAttendenceController {
 		teacherAttendenceReposiory.save(ta);
 		return "redirect:receptionist/teacherAttendences";
 	}
+	
+	@RequestMapping(value="**/manager/viewTeacherAttencence")
+	public String loadTeacherAttendenceHistory(@RequestParam("id")Long id,Model model) {
+		model.addAttribute("teacherAttendenceList", teacherAttendenceReposiory.getteacherAttendenceHistory(id));
+		return "manager_viewTeacherAttendence";
+	}
 }

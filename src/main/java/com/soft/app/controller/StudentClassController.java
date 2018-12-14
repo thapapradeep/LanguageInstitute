@@ -13,12 +13,12 @@ import com.soft.app.model.Student;
 import com.soft.app.model.StudentClass;
 import com.soft.app.model.classes;
 import com.soft.app.repository.StudentClassReopsitory;
-import com.soft.app.repository.StudentRepository;
+
 
 @Controller
 public class StudentClassController {
 	@Autowired private StudentClassReopsitory studentClassRepository;
-	@Autowired private StudentRepository studentRepository;
+
 	
 	
 	
@@ -32,7 +32,7 @@ public class StudentClassController {
 		classes clas=new classes();
 		clas.setId(id);
 		model1.addAttribute("clas", clas);
-		model.addAttribute("studentList", studentRepository.findAll());
+		model.addAttribute("studentList", studentClassRepository.getClassStudent(id));
 		return "receptionist_addClassStudent";
 		
 	}

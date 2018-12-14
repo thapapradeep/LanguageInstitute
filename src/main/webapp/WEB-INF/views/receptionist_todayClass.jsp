@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Language Institute-Students</title>
+<title>Language Institute-Classes</title>
 
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,13 +34,13 @@
 
 <body id="page-top">
 
-	<jsp:include page="managerHeader.jsp" />
+	<jsp:include page="receptionistHeader.jsp" />
 
 
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Langugae Institute-All Staffs
+			<i class="fas fa-table"></i> Language Institute-All Classes
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -49,30 +49,34 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Firstname</th>
-							<th>Lastname</th>
-							<th>Address</th>
-							<th>Email</th>
-							<th>Contact</th>
-							<th>Action</th>
-							<th>View Attendance History</th>
+							<th>Batch Name</th>
+							<th>Classroom Number</th>
+							<th>Start Time </th>
+							<th>End Time</th>
+							<th>Duration</th>
+							<th>Language</th>
+							<th>Teacher</th>
+							<td>Attendance</td>
+		
+							
+							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="staff" items="${staffList }">
+						<c:forEach var="clas" items="${ClassList }">
 							<tr>
-								<td>${staff.getId() }</td>
-								<td>${staff.getFirstname() }</td>
-								<td>${staff.getLastname() }</td>
-								<td>${staff.getAddress() }</td>
-								<td>${staff.getEmail() }</td>
-								<td>${staff.getContact() }</td>
-							
-								<td><a href="manager/updateStaff?id=${staff.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
-									href="manager/deleteStaffs?id=${staff.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
-									<td><a href="manager/viewStaffAttendence?id=${staff.getId()}" class="btn btn-success">View</a></td>
-									
+								<td>${clas.getId() }</td>
+								<td>${clas.getBatch().getName() }</td>
+								<td>${clas.getClassroomNo() }</td>
+								<td>${clas.getStartTime() }</td>
+								<td>${clas.getEndTime() }</td>
+								<td>${clas.getDuration() }</td>
+							    <td>${clas.getLanguage().getLanguage() }</td>
+							    <td>${clas.getTeacher().getFirstname() }</td>
+							    
+							    
+								<td><a href="receptionist/attendStudent?class_id=${clas.getId()}" class="btn btn-success">Attendance</a></td>
 							</tr>
 						</c:forEach>
 
@@ -88,8 +92,7 @@
 
 
 	<jsp:include page="footer.jsp" />
-
-
+	
 </body>
 
 </html>

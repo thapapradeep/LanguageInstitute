@@ -48,12 +48,13 @@ public class ClassController {
 		
 	}
 	
+
+	
 	@RequestMapping(value="**/receptionist/addClasses", method=RequestMethod.GET)
 	private String re_loadAddClassPage(Model model, Model model1) {
 	   model1.addAttribute("languageList", languageRepository.findAll());
 	   model.addAttribute("batchList", batchRepository.findAll());
-		return "receptionist_addClasss";
-		
+		return "receptionist_addClasss";	
 	}
 	
 	@RequestMapping(value="**/manager/add-addClass", method=RequestMethod.POST)
@@ -75,6 +76,12 @@ public class ClassController {
 		return "manager_viewClass";
 	}
 	
+	
+	@RequestMapping(value="**/receptionist/viewTodayClasses", method=RequestMethod.GET)
+	private String re_loadTodayClasses(Model model) {
+		model.addAttribute("ClassList", classRepository.findAll());
+		return "receptionist_todayClass";
+	}
 	@RequestMapping(value="**/receptionist/viewClasses", method=RequestMethod.GET)
 	private String re_loadViewClasses(Model model) {
 		model.addAttribute("ClassList", classRepository.findAll());

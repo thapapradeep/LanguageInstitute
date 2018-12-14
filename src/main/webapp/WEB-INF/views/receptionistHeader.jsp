@@ -160,8 +160,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="studentsDropdown">
             
+            
             <a class="dropdown-item" href="receptionist/addClasses">Add Class</a>
-            <a class="dropdown-item" href="receptionist/viewClasses">View Class</a>
+            <a class="dropdown-item" href="receptionist/viewClasses">View All Class</a>
+            <a class="dropdown-item" href="receptionist/viewTodayClasses">View Today's Class</a>
             
           </div>
         </li>

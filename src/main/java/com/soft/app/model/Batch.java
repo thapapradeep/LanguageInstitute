@@ -34,6 +34,9 @@ public class Batch {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch1" )
 	private List<ClassRoutine>classRoutine=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="batch" )
+	private List<Student>student=new ArrayList<>();
+	
 	@Column(name="added_date")
 	private Date date;
 	
@@ -81,6 +84,12 @@ public class Batch {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public List<Student> getStudent() {
+		return student;
+	}
+	public void setStudent(List<Student> student) {
+		this.student = student;
 	}
 
 	

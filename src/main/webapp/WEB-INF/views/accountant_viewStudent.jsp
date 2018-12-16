@@ -49,6 +49,7 @@
 					<thead>
 						<tr>
 							<th>Id</th>
+							<th>Batch</th>
 							<th>Firstname</th>
 							<th>Lastname</th>
 							<th>Address</th>
@@ -56,7 +57,7 @@
 							<th>Contact</th>
 							<th>Status</th>
 							<th>Added Date</th>
-							<th>Action</th>
+							<th>View Class</th>
 						</tr>
 					</thead>
 
@@ -64,6 +65,7 @@
 						<c:forEach var="student" items="${studentlist }">
 							<tr>
 								<td>${student.getId() }</td>
+								<td>${student.getBatch().getBatchId() }</td>
 								<td>${student.getFirstname() }</td>
 								<td>${student.getLastname() }</td>
 								<td>${student.getAddress() }</td>
@@ -71,7 +73,7 @@
 								<td>${student.getContact() }</td>
 								<td>${student.getAddedDate() }</td>
 								<td>${student.getStatus() }</td>
-								
+								<td><a href="accountant/viewStudentClass?id=${student.getId()}" class="btn btn-success">View Class</a>
 							</tr>
 						</c:forEach>
 

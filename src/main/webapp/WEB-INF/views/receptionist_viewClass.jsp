@@ -58,10 +58,10 @@
 							<th>Teacher</th>
 							<th>Student's Fee</th>
 							<th>Teacher's Salary</th>
-							<td>Action</td>
-							 <td>Add Students To This Class</td>
-							
 							<th>Action</th>
+							 <th>Add Students To This Class</th>
+							
+							
 						</tr>
 					</thead>
 
@@ -81,7 +81,7 @@
 							    
 							   
 								<td><a href="receptionist/updateClass?id=${clas.getId()}" class="btn btn-success">Update</a></td>
-								<td><a href="receptionist/addStudentClass?class_id=${clas.getId()}" class="btn btn-success">Add Students</a></td>
+								<td><a href="receptionist/addStudentClass?class_id=${clas.getId()}&batch_id=${clas.getBatch().getId()}" class="btn btn-success">Add Students</a></td>
 							</tr>
 						</c:forEach>
 

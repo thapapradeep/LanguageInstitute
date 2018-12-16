@@ -52,6 +52,10 @@
          						<form:form action="manager/update-updateStudent" method="POST" modelAttribute="student">
          						
          							<form:hidden path="id" value="${student.getId() }"/>
+         								<div class="form-group">
+         								<label>Select Batch</label>
+         								<form:select path="batch" items="${batchList}" itemLabel="name" itemValue="id"  class="form-control" value="${clas.getBatch().getName()}"/>
+         							</div>
          							<div class="form-group">
          								<label>Firstname</label>
          								<form:input path="firstname" class="form-control" value="${student.getFirstname() }" placeholder="Enter firstname"/>

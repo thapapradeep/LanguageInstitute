@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
  <!DOCTYPE html>
 <html lang="en">
@@ -104,34 +105,49 @@
    
         
 
-          <!-- DataTables Example -->
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Language Institute Staffs</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                                   </tbody>
-                </table>
-              </div>
-            </div>
-           
-          </div>
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-All Classes
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Day</th>
+							<th>First Class </th>
+							<th>Second Class</th>
+							<th>Third Class</th>
+							
+							
+						
+						</tr>
+					</thead>
 
-        </div>
+					<tbody >
+						<c:forEach var="routine" items="${routineList }">
+							<tr>
+								<td>${routine.getId() }</td>
+								<td>${routine.getDay().getDay()}</td>
+								<td>${routine.getClass1().getClassName()}<br>${routine.getClass1().getStartTime()}-${routine.getClass1().getEndTime()}<br>Teacher: ${routine.getClass1().getTeacher().getFirstname()}</td>
+								<td>${routine.getClass2().getClassName()}<br>${routine.getClass2().getStartTime()}-${routine.getClass2().getEndTime()}<br>Teacher: ${routine.getClass2().getTeacher().getFirstname()}</td>
+								<td>${routine.getClass3().getClassName()}<br>${routine.getClass3().getStartTime()}-${routine.getClass3().getEndTime()}<br>Teacher: ${routine.getClass3().getTeacher().getFirstname()}</td>
+							    
+							   
+								
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
         <!-- /.container-fluid -->
 
        

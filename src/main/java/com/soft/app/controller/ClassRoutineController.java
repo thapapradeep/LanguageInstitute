@@ -1,5 +1,6 @@
 package com.soft.app.controller;
 
+import java.util.Calendar;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,13 @@ public class ClassRoutineController {
 	model2.addAttribute("classList", classRepository.findAll());
 	return "manager_createRoutine";
 	}
+	@RequestMapping(value="**/receptionist/createRoutine", method=RequestMethod.GET)
+	public String re_loadCreateRoutinePage(Model model, Model model1, Model model2) {
+	model.addAttribute("dayList", dayRepository.findAll());
+	model1.addAttribute("batchList", batchRepository.findAll());
+	model2.addAttribute("classList", classRepository.findAll());
+	return "receptionist_createRoutine";
+	}
 	
 	
 	@RequestMapping(value="**/manager/add-addRoutine", method=RequestMethod.POST)
@@ -46,10 +54,22 @@ public class ClassRoutineController {
 		return "redirect:manager/viewRoutine";
 	}
 	
+	
+	@RequestMapping(value="**/receptionist/add-addRoutine", method=RequestMethod.POST)
+	public String re_addRoutine(@ModelAttribute("classRoutine")ClassRoutine classRoutine) {
+		classRoutineRepository.save(classRoutine);
+		return "redirect:receptionist/viewRoutine";
+	}
 	@RequestMapping(value="**/manager/viewRoutine", method=RequestMethod.GET)
 	public String viewRoutine(Model model) {
 		model.addAttribute("routineList", classRoutineRepository.findAll());
 		return "manager_viewRoutine";	
+	}
+	
+	@RequestMapping(value="**/receptionist/viewRoutine", method=RequestMethod.GET)
+	public String re_viewRoutine(Model model) {
+		model.addAttribute("routineList", classRoutineRepository.findAll());
+		return "receptionist_viewRoutine";	
 	}
 	
 	@RequestMapping(value="**/manager/updateClassRoutine", method=RequestMethod.GET)
@@ -61,6 +81,15 @@ public class ClassRoutineController {
 		model2.addAttribute("batchList", batchRepository.findAll()); 
 		return "manager_updateRoutine";
 	}
+	@RequestMapping(value="**/receptionist/updateClassRoutine", method=RequestMethod.GET)
+	public String re_loadUpdatePage(@RequestParam("id")Long id, Model model, Model model1, Model model2) {
+		Optional<ClassRoutine>classroutine=classRoutineRepository.findById(id);
+		ClassRoutine classRoutine =classroutine.get();
+		model.addAttribute("classRoutine", classRoutine);
+		model1.addAttribute("classList", classRepository.findAll()); 
+		model2.addAttribute("batchList", batchRepository.findAll()); 
+		return "receptionist_updateRoutine";
+	}
 	
 	@RequestMapping(value="**/manager/update-updateClassRoutine", method=RequestMethod.POST)
 	public String updateRoutine(@ModelAttribute("classRoutine")ClassRoutine classRoutine) {
@@ -68,10 +97,25 @@ public class ClassRoutineController {
 		return "redirect:/manager/viewRoutine";
 		
 	}
+	@RequestMapping(value="**/receptionist/update-updateClassRoutine", method=RequestMethod.POST)
+	public String re_updateRoutine(@ModelAttribute("classRoutine")ClassRoutine classRoutine) {
+		classRoutineRepository.save(classRoutine);
+		return "redirect:/receptionist/viewRoutine";
+		
+	}
+	
 	
 	@RequestMapping(value="**/manager/deleteClassRoutine", method=RequestMethod.GET)
 	public String deleteRoutine(@RequestParam("id")Long id) {
 		classRoutineRepository.deleteById(id);
 		return "redirect:/manager/viewRoutine";
 	}
+	
+	@RequestMapping(value="**/receptionist/deleteClassRoutine", method=RequestMethod.GET)
+	public String re_deleteRoutine(@RequestParam("id")Long id) {
+		classRoutineRepository.deleteById(id);
+		return "redirect:/receptionist/viewRoutine";
+	}
+	
+	
 }

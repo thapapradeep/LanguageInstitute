@@ -49,6 +49,7 @@
 					<thead>
 						<tr>
 							<th>Id</th>
+							<th>Batch</th>
 							<th>Firstname</th>
 							<th>Lastname</th>
 							<th>Address</th>
@@ -64,6 +65,7 @@
 						<c:forEach var="student" items="${studentlist }">
 							<tr>
 								<td>${student.getId() }</td>
+								<td>${student.getBatch().getBatchId() }</td>
 								<td>${student.getFirstname() }</td>
 								<td>${student.getLastname() }</td>
 								<td>${student.getAddress() }</td>

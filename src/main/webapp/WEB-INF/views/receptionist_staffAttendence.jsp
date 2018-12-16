@@ -62,7 +62,7 @@
 								<td>${staff.getId() }</td>
 								<td>${staff.getFirstname() }</td>
 								<td>${staff.getLastname() }</td>
-								<td>${staff.getRole().getRole() }</td>
+								<td>${staff.getRole().getRole()}</td>
 								
 							
 								<td><a href="present-Staff?id=${staff.getId()}" class="btn btn-success" role="button">Present</a></td>

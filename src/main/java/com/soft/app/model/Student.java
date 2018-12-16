@@ -7,9 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -55,6 +58,10 @@ public class Student {
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="student")
 	@JsonIgnore
 	private List<StudentClass>studentclass=new ArrayList<>();
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="student")
+	@JsonIgnore
+	private List<StudentClass>studentFee=new ArrayList<>();
 	
 	
 	
@@ -122,6 +129,10 @@ public class Student {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="batch_id")
+	private Batch batch;
 
 	public List<StudentAttendence> getStudentAttendence() {
 		return studentAttendence;
@@ -137,6 +148,22 @@ public class Student {
 
 	public void setStudentclass(List<StudentClass> studentclass) {
 		this.studentclass = studentclass;
+	}
+
+	public List<StudentClass> getStudentFee() {
+		return studentFee;
+	}
+
+	public void setStudentFee(List<StudentClass> studentFee) {
+		this.studentFee = studentFee;
+	}
+
+	public Batch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(Batch batch) {
+		this.batch = batch;
 	}
 
 

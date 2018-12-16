@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Language Institute- Add Language</title>
+    <title>Language Institute- Add Role</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
          						<form:form action="add-addRole" method="POST" modelAttribute="role">
          							<div class="form-group">
          								<label>Role Name</label>
-         								<form:input path="role" class="form-control" placeholder="Enter Language Name"/>
+         								<form:input path="role" class="form-control" placeholder="Enter Role Name"/>
          								
          							</div>
          							<div class="form-group">

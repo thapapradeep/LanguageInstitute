@@ -4,6 +4,7 @@ package com.soft.app.controller;
 
 
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.soft.app.model.Role;
 import com.soft.app.model.User;
+import com.soft.app.repository.ClassRoutineReopsitory;
 import com.soft.app.repository.RoleReopsitory;
+import com.soft.app.repository.StaffSalaryRepository;
+import com.soft.app.repository.TeacherSalaryRepository;
 import com.soft.app.repository.UserRepository;
 import com.soft.app.util.UserLoginUtil;
 import com.soft.app.validator.UserValidator;
@@ -44,6 +48,9 @@ public class UserController {
 	@Autowired private UserLoginUtil userLoginUtil;
 	@Autowired private RoleReopsitory roleRepository;
 	@Autowired private UserValidator userValidator;
+	@Autowired private StaffSalaryRepository staffSalaryRepository;
+	@Autowired private TeacherSalaryRepository teacherSalaryRepository;
+	@Autowired private ClassRoutineReopsitory classRoutineReopsitory;
 	
 	
 	@InitBinder
@@ -77,7 +84,7 @@ public class UserController {
 		}
 		
 		//logout url
-		@RequestMapping(value="/logout",method=RequestMethod.GET)
+		@RequestMapping(value="**/logout",method=RequestMethod.GET)
 		public String configureLogoutAction(HttpServletRequest request,HttpServletResponse response){
 			Authentication auth=SecurityContextHolder.getContext().getAuthentication();
 			if(auth!=null){
@@ -93,25 +100,34 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="**/admin",method=RequestMethod.GET)
-	public String loadAdminDashboard() {
+	public String loadAdminDashboard(Model model, Model model1) {
+		model.addAttribute("userList", userRepository.findAll());
+		model1.addAttribute("roleList", roleRepository.findAll());
 		return "admindashboard";
 	}
 	
 
 	@RequestMapping(value="**/manager",method=RequestMethod.GET)
-	public String loadManagerDashboard() {
+	public String loadManagerDashboard(Model model) {
+		
 		return "managerdashboard";
 	}
 	
 
 	@RequestMapping(value="**/accountant",method=RequestMethod.GET)
-	public String loadAccountantDashboard() {
-		return "accountantdashboard";
+	public String loadAccountantDashboard(Model model, Model model1) {
+		//Calendar calendar=Calendar.getInstance();
+				//int month=calendar.get(Calendar.MONTH);
+				//int month1=month+1;
+				model.addAttribute("staffList", staffSalaryRepository.getUnPaidStaff(10));
+		model1.addAttribute("teacherList", teacherSalaryRepository.getUnPaidTeacher(10));
+				return "accountantdashboard";
 	}
 	
 
 	@RequestMapping(value="**/receptionist",method=RequestMethod.GET)
-	public String loadReceptionistDashboard() {
+	public String loadReceptionistDashboard(Model model) {
+		model.addAttribute("routineList", classRoutineReopsitory.findAll());
 		return "receptionistdashboard";
 	}
 	

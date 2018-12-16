@@ -58,6 +58,10 @@
          					<div class="col-lg-offset-3 col-lg-6">
          						<form:form action="receptionist/add-addStudent" method="POST" modelAttribute="student">
          							<div class="form-group">
+         								<div class="form-group">
+         								<label>Select Batch</label>
+         								<form:select path="batch" items="${batchList}" itemLabel="batchId" itemValue="id"  class="form-control" />
+         							</div>
          								<label>Firstname</label>
          								<form:input path="firstname" class="form-control" placeholder="Enter firstname"/>
          								<form:errors path="firstname" cssClass="error"/>

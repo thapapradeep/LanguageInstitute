@@ -1,5 +1,7 @@
 package com.soft.app.controller;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,18 +79,21 @@ public class ClassController {
 	}
 	
 	
-	@RequestMapping(value="**/receptionist/viewTodayClasses", method=RequestMethod.GET)
-	private String re_loadTodayClasses(Model model) {
-		model.addAttribute("ClassList", classRepository.findAll());
-		return "receptionist_todayClass";
-	}
+
+	
 	@RequestMapping(value="**/receptionist/viewClasses", method=RequestMethod.GET)
 	private String re_loadViewClasses(Model model) {
 		model.addAttribute("ClassList", classRepository.findAll());
 		return "receptionist_viewClass";
 	}
 	
-
+	@RequestMapping(value="**/receptionist/viewTodayClasses", method=RequestMethod.GET)
+	private String re_loadTodayClasses(Model model) {
+		
+		
+		model.addAttribute("ClassList", classRepository.findAll());
+		return "receptionist_todayClass";
+	}
 		
 		@RequestMapping(value="**/accountant/viewClasses", method=RequestMethod.GET)
 		private String loadaccountantViewUsers(Model model) {

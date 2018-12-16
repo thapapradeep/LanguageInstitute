@@ -1,6 +1,5 @@
 package com.soft.app.controller;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,13 +13,16 @@ import com.soft.app.model.Staff;
 import com.soft.app.model.StaffSalaryHistory;
 import com.soft.app.model.Teacher;
 import com.soft.app.model.TeacherSalaryHistory;
+import com.soft.app.model.Transaction;
 import com.soft.app.repository.StaffSalaryRepository;
 import com.soft.app.repository.TeacherSalaryRepository;
+import com.soft.app.repository.TransactionRepository;
 
 @Controller
 public class SalaryHistoryController {
 	@Autowired private StaffSalaryRepository staffRepository;
 	@Autowired private TeacherSalaryRepository teacherRepository;
+	@Autowired TransactionRepository transactionRepository;
 	
 	@ModelAttribute("staffSalary")
 	public StaffSalaryHistory getStaffSalaryHistory() {
@@ -40,6 +42,12 @@ public class SalaryHistoryController {
 		sta.setStaff(staff);
 		sta.setAmount(amount);
 		staffRepository.save(sta);
+		
+		Transaction ts=new Transaction();
+		ts.setParticular("Staff Salary Paymant");
+		ts.setStatus("expense");
+		ts.setAmount(amount);
+		transactionRepository.save(ts);
 		 return "redirect:accountant/viewStaffs";
 	}
 	
@@ -51,6 +59,12 @@ public class SalaryHistoryController {
 		tea.setTeacher(teacher);
 		tea.setAmount(amount);
 		teacherRepository.save(tea);
+		
+		Transaction ts=new Transaction();
+		ts.setParticular("Teacher Salary Paymant");
+		ts.setStatus("expense");
+		ts.setAmount(amount);
+		transactionRepository.save(ts);
 		 return "redirect:accountant/teachers";
 	}
 	

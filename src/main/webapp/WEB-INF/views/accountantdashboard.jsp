@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
  <!DOCTYPE html>
 <html lang="en">
@@ -105,34 +106,99 @@
         
 
           <!-- DataTables Example -->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Language Institute Staffs</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                                   </tbody>
-                </table>
-              </div>
-            </div>
-           
-          </div>
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-All Unpaid Staff of This Month
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Address</th>
+							<th>Email</th>
+							<th>Contact</th>
+							<th>Salary</th>
+							<th>Action</th>
+						</tr>
+					</thead>
 
-        </div>
-        <!-- /.container-fluid -->
+					<tbody >
+						<c:forEach var="staff" items="${staffList}">
+							<tr>
+								<td>${staff.getId() }</td>
+								<td>${staff.getFirstname() }</td>
+								<td>${staff.getLastname() }</td>
+								<td>${staff.getAddress() }</td>
+								<td>${staff.getEmail() }</td>
+								<td>${staff.getContact() }</td>
+								<td>${staff.getRole().getSalary()}</td>
+								<td><a href="accountant/paySatff?id=${staff.getId()}&amount=${staff.getRole().getSalary()}" class="btn btn-success">Pay Salary</a>
+							
+							
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
+	
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-All Unpaid Teachers of This Month
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Address</th>
+							<th>Email</th>
+							<th>Contact</th>
+							<th>Status</th>
+							<th>Salary</th>
+							<th>Pay Salary</th>
+							
+						</tr>
+					</thead>
+
+					<tbody >
+						<c:forEach var="teacher" items="${teacherList }">
+							<tr>
+								<td>${teacher.getId() }</td>
+								<td>${teacher.getFirstname() }</td>
+								<td>${teacher.getLastname() }</td>
+								<td>${teacher.getAddress() }</td>
+								<td>${teacher.getEmail() }</td>
+								<td>${teacher.getContact() }</td>
+								<td>${teacher.getSalary()}</td>
+								<td>${teacher.getStatus() }</td>
+								<td><a href="accountant/payTeacher?id=${teacher.getId()}&amount=${teacher.getSalary()}" class="btn btn-success">Pay Salary</a>
+									
+						
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
 
        
        <jsp:include page="footer.jsp"/>

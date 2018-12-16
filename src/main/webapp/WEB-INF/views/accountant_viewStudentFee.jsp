@@ -36,32 +36,28 @@
 						<tr>
 							<th>Id</th>
 							<th>Batch Name</th>
-							<th>Classroom Number</th>
-							<th>Start Time </th>
-							<th>End Time</th>
+							<th>Student ID</th>
 							<th>Duration</th>
 							<th>Language</th>
 							<th>Teacher</th>
 							<th>Student's Fee</th>
-							<th>Teacher's Salary</th>
+							<th>Pay</th>
 							
 							
 						</tr>
 					</thead>
 
 					<tbody >
-						<c:forEach var="clas" items="${ClassList }">
+						<c:forEach var="clas" items="${classList }">
 							<tr>
 								<td>${clas.getId() }</td>
 								<td>${clas.getBatch().getBatchId() }</td>
-								<td>${clas.getClassroomNo() }</td>
-								<td>${clas.getStartTime() }</td>
-								<td>${clas.getEndTime() }</td>
+								<td>${student.getId() }</td>
 								<td>${clas.getDuration() }</td>
 							    <td>${clas.getLanguage().getLanguage() }</td>
 							    <td>${clas.getTeacher().getFirstname() }</td>
 							    <td>${clas.getStudentFee() }</td>
-							    <td>${clas.getTeacherSalary() }</td>
+							    <td><a href="accountant/payFee?id=${clas.getId()}&amount=${clas.getStudentFee()}&student_id=${student.getId()}" class="btn btn-success">Pay Fee</a>
 							   
 								
 							</tr>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
  <!DOCTYPE html>
 <html lang="en">
 
@@ -102,46 +104,99 @@
           </div>
    
    
-          <!-- Area Chart Example-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-area"></i>
-              Area Chart Example</div>
-            <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
-            </div>
-            
-          </div>
+       
 
           <!-- DataTables Example -->
           <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Language Institute Staffs</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                                   </tbody>
-                </table>
-              </div>
-            </div>
-           
-          </div>
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-All Users
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Address</th>
+							<th>Email</th>
+							<th>Password</th>
+							<th>Contact</th>
+							<th>Status</th>
+							<th>Role</th>
+							<th>Action</th>
+						</tr>
+					</thead>
 
-        </div>
-        <!-- /.container-fluid -->
+					<tbody >
+						<c:forEach var="user" items="${userList }">
+							<tr>
+								<td>${user.getId() }</td>
+								<td>${user.getFirstname() }</td>
+								<td>${user.getLastname() }</td>
+								<td>${user.getAddress() }</td>
+								<td>${user.getEmail() }</td>
+								<td>${user.getUnhashed_password() }</td>
+								<td>${user.getContactnumber() }</td>
+								<td>${user.getStatus() }</td>
+								<td>${user.getRole().getRole() }</td>
+								<td><a href="updateUser?id=${user.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
+									href="deleteUser?id=${user.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
+	
+	
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i> Language Institute-All Roles
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Role Name</th>
+							<th>Salary</th>
+							<th>Action</th>
+							
+						</tr>
+					</thead>
+
+					<tbody >
+						<c:forEach var="role" items="${roleList }">
+							<tr>
+								<td>${role.getId() }</td>
+								<td>${role.getRole() }</td>
+								<td>${role.getSalary() }</td>
+								
+								<td><a href="admin/updateRoles?id=${role.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
+									href="admin/deleteRole?id=${role.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+
+	</div>
+	<!-- /.container-fluid -->
+<!-- /.container-fluid -->
 
        
        <jsp:include page="footer.jsp"/>

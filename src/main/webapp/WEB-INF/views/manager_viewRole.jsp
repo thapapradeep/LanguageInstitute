@@ -38,6 +38,7 @@
 							<th>Id</th>
 							<th>Role Name</th>
 							<th>Salary</th>
+							<th>Action</th>
 							
 						</tr>
 					</thead>
@@ -67,26 +68,6 @@
 
 
 	<jsp:include page="footer.jsp" />
-	<!-- Bootstrap core JavaScript-->
-	
-	 <!-- Bootstrap core JavaScript-->
-    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/vendor/chart.js/Chart.min.js"></script>
-    <script src="${pageContext.request.contextPath}/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="${pageContext.request.contextPath}/js/sb-admin.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="${pageContext.request.contextPath}/js/demo/datatables-demo.js"></script>
-    <script src="${pageContext.request.contextPath}/js/demo/chart-area-demo.js"></script>
 
 
 </body>

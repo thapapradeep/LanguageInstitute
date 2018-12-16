@@ -94,6 +94,10 @@ public class classes {
 	@JsonIgnore
 	private List<StudentAttendence>studentAttendence=new ArrayList<>();
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,mappedBy="classes")
+	@JsonIgnore
+	private List<StudentFee>studentFees=new ArrayList<>();
+	
 	
 
 	
@@ -234,6 +238,14 @@ public class classes {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<StudentFee> getStudentFees() {
+		return studentFees;
+	}
+
+	public void setStudentFees(List<StudentFee> studentFees) {
+		this.studentFees = studentFees;
 	}
 	
 

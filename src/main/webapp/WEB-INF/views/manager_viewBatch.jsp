@@ -39,6 +39,8 @@
 							<th>Batch ID</th>
 							<th>Name</th>
 							<th>Action</th>
+							<th>View Students</th>
+			
 							
 						</tr>
 					</thead>
@@ -51,8 +53,7 @@
 								<td>${batch.getName() }</td>
 								<td><a href="manager/updateBatch?id=${batch.getId()}" class="btn btn-success"><span class="fa fa-edit"></span></a>|<a
 									href="manager/deleteBatch?id=${batch.getId()}" class="btn btn-danger"><span class="fa fa-trash"></span></a></td>
-								
-								
+									
 							</tr>
 						</c:forEach>
 

@@ -33,7 +33,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { // ext
 				.access("hasRole('ROLE_ADMIN')").antMatchers("/users").access("hasRole('ROLE_ADMIN')")
 				.antMatchers("/updateUser").access("hasRole('ROLE_ADMIN')").antMatchers("/update-updateUser")
 				.access("hasRole('ROLE_ADMIN')").antMatchers("/deleteUser").access("hasRole('ROLE_ADMIN')").
-				antMatchers("/manager**").access("hasRole('ROLE_MANAGER')").and()
+				antMatchers("/manager**").access("hasRole('ROLE_MANAGER')").
+				antMatchers("/receptionist**").access("hasRole('ROLE_RECEPTIONIST')").
+				antMatchers("/accountant**").access("hasRole('ROLE_ACCOUNTANT')").and()
 				.formLogin().loginPage("/").loginProcessingUrl("/j_spring_security_check") // login page url and login
 																							// processing url
 				.usernameParameter("email").passwordParameter("password") // username and password parameter

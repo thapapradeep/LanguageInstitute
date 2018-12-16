@@ -105,4 +105,6 @@ public class StudentController {
 		studentRepository.deleteById(id);
 		return "redirect:manager/students";
 	}
+	
+	
 }

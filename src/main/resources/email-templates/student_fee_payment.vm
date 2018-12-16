@@ -1,0 +1,6 @@
+<h2>Dear <strong>${name}</strong></h2>
+<hr>
+
+  <p> ${paymentMessage}</p>
+
+ 

@@ -14,4 +14,7 @@ import com.soft.app.model.classes;
 public interface ClassesRepository extends JpaRepository<classes, Long> {
 	@Query("Select clas from ClassRoutine clas, classes cs,Batch b, Day d where d.id=clas.day.id and b.id=clas.batch1.id and cs.id=clas.class1.id and d.id=?1")
 	List<ClassRoutine>getTodayClass(Long id);
+	
+	@Query("select c.className, count(s.id)as no_of_student from classes c, Student s, StudentClass sc where c.id=sc.classes.id and s.id=sc.student.id group by c.id")
+	List<classes>getNumberOfStudents();
 }

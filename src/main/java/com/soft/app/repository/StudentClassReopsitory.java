@@ -26,4 +26,7 @@ public interface StudentClassReopsitory extends JpaRepository<StudentClass, Long
 	@Query("Select clas from classes clas where clas.id=?1")
 	Optional<classes> getBatchByClass(Long id);
 
+	@Query("Select st from Student st where st.id=?1")
+	Optional<Student> getEmailById(Long id);
+
 }

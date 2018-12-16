@@ -1,5 +1,7 @@
 package com.soft.app.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,13 +55,21 @@ public class StudentClassController {
 	
 	@RequestMapping(value="**/accountant/viewStudentClass", method= RequestMethod.GET)
 	public String acc_viewStudentClass(@RequestParam("id")Long id, Model model, Model model1) {
-		Student s=new Student();
-		s.setId(id);
+		Optional<Student>st=studentClassRepository.getEmailById(id);
+		Student s=st.get();
 		model1.addAttribute("student",s);
 		model.addAttribute("classList", studentClassRepository.getClassByStudent(id));
 		return "accountant_viewStudentFee";
 	}
 	
+	
+	@RequestMapping(value="**/accountant/sendMail", method=RequestMethod.GET)
+	public String loadEmailPage(@RequestParam("id")Long id, Model model) {
+		Optional<Student>st=studentClassRepository.getEmailById(id);
+		Student student=st.get();
+		model.addAttribute("student", student);
+		return "accountSendMail";
+	}
 	
 	
 

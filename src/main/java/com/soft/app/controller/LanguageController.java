@@ -61,7 +61,7 @@ public class LanguageController {
 		
 	}
 	
-	@RequestMapping(value="**//deleteLanguages", method=RequestMethod.GET)
+	@RequestMapping(value="**/deleteLanguages", method=RequestMethod.GET)
 	public String deleteLanguage(@RequestParam("id") long id) {
 		languageRepository.deleteById(id);
 		return "redirect:manager/viewLangauges";

@@ -102,16 +102,8 @@
           </div>
    
    
-          <!-- Area Chart Example-->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-area"></i>
-              Area Chart Example</div>
-            <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
-            </div>
-            
-          </div>
+ <div id="chartContainer" style="height: 300px; width: 50%;"></div>
+<div id="chartContainerrr" style="height: 300px; width: 50%;"></div>
 
           <!-- DataTables Example -->
           <div class="card mb-3">
@@ -143,9 +135,53 @@
         </div>
         <!-- /.container-fluid -->
 
-       
+       <script>
+
+window.onload = function () {
+var dataPoints = [];
+var chart = new CanvasJS.Chart("chartContainer",{
+	title:{
+		text:"No of students for month Oct"
+	},
+	data: [{
+		type: "line",
+		dataPoints : dataPoints,
+	}]
+});
+
+$.getJSON('http://localhost:8080/viewNoOfStudentsPerClass',function(data){
+	$.each(data,function(key,value){
+		console.log(value[0]);
+		console.log(value[1]);
+		dataPoints.push({label:value[0],y:parseInt(value[1])});
+	});
+	chart.render();
+});
+
+var dataPoint = [];
+var chart1 = new CanvasJS.Chart("chartContainerrr",{
+	title:{
+		text:"No of students for month Nov"
+	},
+	data: [{
+		type: "line",
+		dataPoints : dataPoint,
+	}]
+});
+
+$.getJSON('http://localhost:8080/viewNoOfStudentsPerClass',function(data){
+	$.each(data,function(key,value){
+		console.log(value[0]);
+		console.log(value[1]);
+		dataPoint.push({label:value[0],y:parseInt(value[1])});
+	});
+	chart1.render();
+});
+
+}
+</script>
        <jsp:include page="footer.jsp"/>
-    
+    <script src="/js/demo/jQuery-canvas.min.js"></script>
 
   </body>
 

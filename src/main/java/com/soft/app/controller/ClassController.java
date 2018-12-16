@@ -1,7 +1,5 @@
 package com.soft.app.controller;
 
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,7 @@ import com.soft.app.repository.TeacherRepository;
 
 
 @Controller
-
+@CrossOrigin(allowedHeaders = "*")
 public class ClassController {
 	@Autowired private ClassesRepository classRepository;
 	@Autowired private BatchRepository batchRepository;
@@ -174,4 +173,17 @@ public class ClassController {
 	}
 	
 
+	@RequestMapping(value="/viewNoOfStudentsPerClass", method=RequestMethod.GET)
+	public @ResponseBody List<classes> getNoOFStudents() {
+		try {
+			List<classes> cinfo = classRepository.getNumberOfStudents();
+			return cinfo;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+			
+		}
+		
+	}
+	
 }

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.soft.app.model.Teacher;
+
 import com.soft.app.model.classes;
 import com.soft.app.repository.BatchRepository;
 import com.soft.app.repository.ClassRoutineReopsitory;
@@ -217,10 +218,22 @@ public class ClassController {
 	}
 	
 
-	@RequestMapping(value="/viewNoOfStudentsPerClass", method=RequestMethod.GET)
+	@RequestMapping(value="/viewNoOfStudentsPerClassOct", method=RequestMethod.GET)
 	public @ResponseBody List<classes> getNoOFStudents() {
 		try {
-			List<classes> cinfo = classRepository.getNumberOfStudents();
+			List<classes> cinfo = classRepository.getNumberOfStudentsOct();
+			return cinfo;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+			
+		}
+		
+	}
+	@RequestMapping(value="/viewNoOfStudentsPerClassNov", method=RequestMethod.GET)
+	public @ResponseBody List<classes> getNoOFStudentsNov() {
+		try {
+			List<classes> cinfo = classRepository.getNumberOfStudentsNov();
 			return cinfo;
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());

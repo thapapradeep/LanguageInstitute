@@ -18,4 +18,6 @@ public interface StaffAttendenceReopsitory extends JpaRepository<StaffAttendence
 	
 	@Query("Select count(sta) from StaffAttendence sta where sta.staff.id=?1 and sta.status='absent' and month(sta.date)=?2")
 	int getAbsentDays(Long id, int month);
+	
+	
 }

@@ -76,19 +76,7 @@
             
           </div>
           </li>
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="StaffsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Attendance</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="studentsDropdown">
-            
-            <a class="dropdown-item" href="#">View Attendance</a>
-           
-           
-            
-          </div>
-        </li>
+    
         
      
         
@@ -178,6 +166,19 @@
            
             <a class="dropdown-item" href="manager/viewTransaction">View transaction</a>
             
+          </div>
+        </li>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Reports</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="studentsDropdown">
+            
+           
+            <a class="dropdown-item" href="manager/viewAvgBalance">View Student Per Class</a>
+            <a class="dropdown-item" href="manager/viewIncome">View Income Report</a>
+             <a class="dropdown-item" href="manager/viewExpense">View Expense Reports</a> 
           </div>
         </li>
        

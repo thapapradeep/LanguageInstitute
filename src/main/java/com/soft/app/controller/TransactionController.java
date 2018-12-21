@@ -3,6 +3,7 @@ package com.soft.app.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.soft.app.model.Transaction;
 import com.soft.app.repository.MonthRepository;
@@ -93,5 +95,56 @@ public class TransactionController {
 		
 	}
 	
-
+	
+	@RequestMapping(value="/viewAverageBalance", method=RequestMethod.GET)
+	public @ResponseBody List<Transaction> getBalanceByWeek() {
+		try {
+			List<Transaction> cinfo = transactionRepository.getAvgAmountPerWeek();
+			return cinfo;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+			
+		}
+	}
+		
+  @RequestMapping(value="**/manager/viewAvgBalance", method=RequestMethod.GET)
+ public String getBalanceReoprt() {
+	return "manager_viewReport"; 
+ }
+  
+  
+  @RequestMapping(value="/viewIncomePerWeek", method=RequestMethod.GET)
+	public @ResponseBody List<Transaction> getIncomeByWeek() {
+		try {
+			List<Transaction> cinfo = transactionRepository.getIncomePerWeek();
+			return cinfo;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+			
+		}
+	}
+  @RequestMapping(value="/viewExpensePerWeek", method=RequestMethod.GET)
+	public @ResponseBody List<Transaction> getExpenseByWeek() {
+		try {
+			List<Transaction> cinfo = transactionRepository.getExpensePerWeek();
+			return cinfo;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+			
+		}
+	}
+  @RequestMapping(value="**/manager/viewIncome", method=RequestMethod.GET)
+ public String getIncomeReoprt() {
+	return "manager_viewIncome"; 
+ }
+  
+  @RequestMapping(value="**/manager/viewExpense", method=RequestMethod.GET)
+  public String getExpenseReoprt() {
+ 	return "manager_viewExpense"; 
+  }
+  
 }
+

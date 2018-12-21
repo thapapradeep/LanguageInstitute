@@ -53,6 +53,7 @@
 							<th>Particulars</th>
 							<th>Amount</th>
 							<th>Status</th>
+							<th>Balance</th>
 							
 						</tr>
 					</thead>
@@ -65,6 +66,7 @@
 								<td>${transaction.getParticular() }</td>
 								<td>${transaction.getAmount() }</td>
 								<td>${transaction.getStatus() }</td>
+								<td>${transaction.getBalance() }</td>
 							
 							</tr>
 						</c:forEach>

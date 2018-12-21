@@ -1,5 +1,7 @@
 package com.soft.app.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,17 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	
 	@Query("select sum(t.amount) from Transaction t where t.status='income' and t.particular not in('Student Fee Payment', 'Staff Salary Payment') and month(t.date)=?1")
 	double getMiscIncome(int month);
+	
+	
+	@Query("Select week(t.date, 0)as Week,  avg(t.balance)as Amount from Transaction t group by week(t.date,0)")
+	List<Transaction> getAvgAmountPerWeek();
+	
+	@Query("select week(date, 0) as week, sum(t.amount)as income from Transaction t where t.status='income' group by week(t.date, 0)")
+	List<Transaction>getIncomePerWeek();
+	
+	@Query("select week(date, 0) as week, sum(t.amount)as income from Transaction t where t.status='Expense' group by week(t.date, 0)")
+	List<Transaction>getExpensePerWeek();
+	
 
 	
 

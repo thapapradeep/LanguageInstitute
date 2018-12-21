@@ -56,7 +56,7 @@ public class StudentAttendenceController {
        studentAttendence.setDate(date1);
 		studentAttendence.setStatus("present");
 		studentAttendenceRepository.save(studentAttendence);
-		return "redirect:receptionist/attendStudent?class_id="+class_id;
+		return "redirect:receptionist/attendStudent?id="+class_id;
 		
    }
    @RequestMapping(value="**/receptionist/absent-student", method= {RequestMethod.POST, RequestMethod.GET})
@@ -74,7 +74,7 @@ public class StudentAttendenceController {
         Date date1=dateFormat.parse(dateFormat.format(date));
        studentAttendence.setDate(date1);
 		studentAttendenceRepository.save(studentAttendence);
-		return "redirect:receptionist/attendStudent?class_id="+class_id;
+		return "redirect:receptionist/attendStudent?id="+class_id;
 		
    }
 	

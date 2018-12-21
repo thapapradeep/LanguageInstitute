@@ -34,6 +34,7 @@
 <body class="bg-dark">
 
 	<div class="container">
+	<div class="panel-heading">Language Institute- Login</div> 
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Language Institute-Login</div>
 			<div class="card-body">

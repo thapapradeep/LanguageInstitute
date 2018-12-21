@@ -43,9 +43,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-comments"></i>
                   </div>
-                  <div class="mr-5">26 New Students!</div>
+                  <div class="mr-5">New Students!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="/students">
+                <a class="card-footer text-white clearfix small z-1" href="admin/students">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -59,9 +59,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">11 New Languages!</div>
+                  <div class="mr-5"> New Users!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewLangauages">
+                <a class="card-footer text-white clearfix small z-1" href="admin/viewUser">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -75,9 +75,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                   </div>
-                  <div class="mr-5">50 Staffs</div>
+                  <div class="mr-5"> Staffs</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewStaffs">
+                <a class="card-footer text-white clearfix small z-1" href="admin/viewStaffs">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -91,9 +91,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-life-ring"></i>
                   </div>
-                  <div class="mr-5">20 New Classes</div>
+                  <div class="mr-5">New Classes</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewClasses">
+                <a class="card-footer text-white clearfix small z-1" href="admin/viewClasses">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>

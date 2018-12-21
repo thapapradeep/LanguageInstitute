@@ -43,7 +43,7 @@
                   </div>
                   <div class="mr-5">26 New Students!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="/students">
+                <a class="card-footer text-white clearfix small z-1" href="manager/students">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -57,9 +57,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-list"></i>
                   </div>
-                  <div class="mr-5">11 New Languages!</div>
+                  <div class="mr-5">2 New Languages!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewLangauages">
+                <a class="card-footer text-white clearfix small z-1" href="manager/viewLangauages">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -73,9 +73,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                   </div>
-                  <div class="mr-5">50 Staffs</div>
+                  <div class="mr-5">3 New Staffs</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewStaffs">
+                <a class="card-footer text-white clearfix small z-1" href="manager/viewStaffs">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -89,9 +89,9 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-life-ring"></i>
                   </div>
-                  <div class="mr-5">20 New Classes</div>
+                  <div class="mr-5">2 New Classes</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="viewClasses">
+                <a class="card-footer text-white clearfix small z-1" href="manager/viewClasses">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -102,38 +102,10 @@
           </div>
    
    
- <div id="chartContainer" style="height: 300px; width: 50%;"></div>
-<div id="chartContainerrr" style="height: 300px; width: 50%;"></div>
+ <div id="chartContainer" style="height: 500px; width: 90%;"></div>
 
-          <!-- DataTables Example -->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Language Institute Staffs</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                
-                  <tbody>
-                                   </tbody>
-                </table>
-              </div>
-            </div>
-           
-          </div>
 
-        </div>
-        <!-- /.container-fluid -->
+         
 
        <script>
 
@@ -141,7 +113,7 @@ window.onload = function () {
 var dataPoints = [];
 var chart = new CanvasJS.Chart("chartContainer",{
 	title:{
-		text:"No of students for month Oct"
+		text:"Balance Per Week"
 	},
 	data: [{
 		type: "line",
@@ -149,7 +121,7 @@ var chart = new CanvasJS.Chart("chartContainer",{
 	}]
 });
 
-$.getJSON('http://localhost:8080/viewNoOfStudentsPerClass',function(data){
+$.getJSON('http://localhost:8080/viewAverageBalance',function(data){
 	$.each(data,function(key,value){
 		console.log(value[0]);
 		console.log(value[1]);
@@ -158,25 +130,8 @@ $.getJSON('http://localhost:8080/viewNoOfStudentsPerClass',function(data){
 	chart.render();
 });
 
-var dataPoint = [];
-var chart1 = new CanvasJS.Chart("chartContainerrr",{
-	title:{
-		text:"No of students for month Nov"
-	},
-	data: [{
-		type: "line",
-		dataPoints : dataPoint,
-	}]
-});
 
-$.getJSON('http://localhost:8080/viewNoOfStudentsPerClass',function(data){
-	$.each(data,function(key,value){
-		console.log(value[0]);
-		console.log(value[1]);
-		dataPoint.push({label:value[0],y:parseInt(value[1])});
-	});
-	chart1.render();
-});
+
 
 }
 </script>
